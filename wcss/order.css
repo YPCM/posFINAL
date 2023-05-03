@@ -1,0 +1,465 @@
+ @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai+Looped:wght@300;400;700&family=Noto+Sans+Thai:wght@300&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family:  'Noto Sans Thai', sans-serif;
+    }
+body{
+    background: #f3f3f3ce;
+}
+
+
+.home-section{
+    display: flex;
+    justify-content: space-between;
+}
+
+.menuboxtop{
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    height: 45px;
+    background-color:#0984e3;
+}
+
+.menubox{
+    padding-left: 2px;
+    height: 54px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    display: flex;
+    justify-content: space-between;
+}
+
+/*    
+.menubox .b1{
+    background-color: #0984e3;
+    width: 2px;
+}
+
+.menubox .a1 .links_name ,
+.menubox .a1 i {
+    color: #0984e3;
+}
+*/
+
+.menubox .a1 ,
+.menubox .a2 ,
+.menubox .a3 ,
+.menubox .a4 ,
+.menubox .a5 ,
+.menubox .a6{
+    width: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.menu{
+    box-shadow: 0 0 10px rgba(0, 0, 0.5, 0.5);
+    height: 100vh;
+   /* background-color: chartreuse;*/
+    width: 66px;
+    font-size: 10px;
+}
+.menu a{
+    text-align: center;
+    padding-top: 5px;
+    padding-bottom:5px ;
+    text-decoration: none;
+    color: #000000;
+}
+.menubox{
+    margin-bottom: 1px;   
+   /* background-color: blueviolet;*/
+
+}
+
+.menubox :hover{
+    right: 0;
+    width: 60px;
+    background-color: rgb(255, 255, 255);
+}
+
+.menubox  a:hover .links_name,
+.menubox  a:hover i
+{
+    color: #0984e3;
+}
+
+.menu i{
+    font-size: 25px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;    
+    color: #5f5f5f;
+}
+.menu .links_name{
+    display: flex;
+    align-items: center;
+    justify-content: center;   
+    list-style: none;
+    color: #5f5f5f;
+}
+
+
+
+
+::-webkit-scrollbar { /* ความกว้าง */
+    width: 1px;
+  } 
+::-webkit-scrollbar-thumb {
+    background: #0984e3; 
+    border-radius: 10px;
+}
+
+.s{
+    max-height: 93%;
+    overflow-x: scroll;
+
+}
+.content{
+    height: 100vh;
+    width: 100%;
+   /* background: #d5eeffce; /*#f3f3f3ce*/
+    font-size: 14px;
+}
+.shop-name{
+    /*background-color: #ff0000;*/
+    margin-left: 10px;
+    width: 30%;
+}
+.shop-name p{
+    width: 200px;
+    color: #FFF;
+    font-weight: bold;
+    letter-spacing: 2px; /*เ ว้นวรรคตัวอักษร */
+}
+
+.A{
+    max-height: 95%; /*  */
+    display: flex;
+    justify-content: space-between
+  }
+
+
+.menuboxtop{
+    display:  flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-right: 10px;
+}
+
+
+.total-sum{
+    position: absolute;
+    right: 0px;
+    justify-content: flex-end;
+    padding-right: 10px;
+    width: 50%;
+    display: flex;
+}
+
+
+
+
+/*Badges in Buttons*/
+.total-sum p{
+    height: 5vh;
+    width: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+   /* background-color: #02a72b;*/
+
+}
+.button {
+    padding-top: 10px;
+	position: relative;
+	border-radius: 4px;
+	/*border: 2px solid white;*/
+	/*padding: 15px 30px;*/
+	color: white;
+	/*background: rgba(0,0,0,.1);*/
+	/*box-shadow: 0 2px 10px rgba(0,0,0,.15);*/
+	cursor: pointer;
+	user-select: none;
+	transition: all .3s;
+    width: 40px;
+}
+.button i{
+    font-size: 25px;
+}
+.button i:hover{
+    color: #525252;
+}
+
+
+.badge {
+	border-radius: 50%;
+    font-size: 13px;
+	width: 20px;
+	height: 20px;
+	display: block;
+	position: absolute;
+	background: #de3902;
+    box-shadow: 0 2px 10px rgba(0,0,0,.15);
+	/*border: 2px solid white;*/
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	top: 3px;
+	right: 5px;
+	transition: all .3s;
+}
+/*Badges in Buttons*/
+.total-sum p{
+    height: 5vh;
+    width: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+   /* background-color: #02a72b;*/
+
+}
+.button {
+    padding-top: 10px;
+	position: relative;
+	border-radius: 4px;
+	/*border: 2px solid white;*/
+	/*padding: 15px 30px;*/
+	color: white;
+	/*background: rgba(0,0,0,.1);*/
+	/*box-shadow: 0 2px 10px rgba(0,0,0,.15);*/
+	cursor: pointer;
+	user-select: none;
+	transition: all .3s;
+    width: 40px;
+}
+.button i{
+    font-size: 25px;
+}
+.button i:hover{
+    color: #525252;
+}
+
+
+.badge {
+	border-radius: 50%;
+    font-size: 13px;
+	width: 20px;
+	height: 20px;
+	display: block;
+	position: absolute;
+	background: #de3902;
+    box-shadow: 0 2px 10px rgba(0,0,0,.15);
+	/*border: 2px solid white;*/
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	top: 3px;
+	right: 5px;
+	transition: all .3s;
+}
+/* จบ */
+
+
+
+.box{   
+    padding: 0px 20px 0px 20px;
+    height: 90vh;
+    width: 100%;
+   /* overflow: scroll;*/
+   /* background-color: #000000;*/
+}
+.boxuser{
+    /*padding: 20px 20px 20px 20px;*/
+    padding-top: 20px;
+    padding-bottom: 10px;
+    border-radius: 3px;
+    width: 100%;
+  /* background-color: #ffffff00;*/
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.10);
+}
+
+
+.boxtable{
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+   /* background-color: aqua;*/
+}
+.table{   
+   /* margin: 0px 20px;*/
+    margin-top: 10px ;
+    width: 100%;
+    height: 10vh;
+    background-color: #0984e3;
+    color: rgb(255, 255, 255);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    letter-spacing: 3px;
+}
+
+.table p{
+    padding-left: 50px;
+    width: 100%;
+    font-size: 25px;
+    font-weight: bold;
+    /*text-align: center;*/
+}
+.box .boxuser .TTT{
+    height: 5vh;
+   /* background-color: #de3902;*/
+    padding-left: 30px;
+}
+
+
+
+
+ .btnttt{
+    height: 100%;
+    width: 15%;
+    color: #fff;
+    border: none;
+    margin-right: 5px;
+    border-radius: 5px;
+    /*font-weight: bold;*/
+    letter-spacing: 2px;
+ } 
+
+ .box .boxuser .TTTT{
+   /* margin-top: 10px;*/
+    margin: 10px 30px;
+  /*  background-color: #de3902;*/
+   /* height: 100%;*/
+ }
+
+
+ table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+    font-size: 14px;
+    /*background-color: #2ecc71;*/
+  }
+
+ table tr th{
+    background-color: #0984e3;
+    color: #fff;
+    text-align: center;
+    font-weight: 100;
+  }
+
+  td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+  }
+  tr td .btn{
+    width:30%;
+  }
+
+
+ .boxuser table tr td .btntttt{
+    width: 100%;
+    height: 4vh;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    font-weight: bold;
+  }
+
+  .boxuser  .cancel{
+    background-color: #de3902;
+  }
+  .boxuser  .awaiting{
+    background-color:  #f1c40f;
+  }
+  .boxuser  .paid{
+    background-color:#3498db ;
+  }
+
+
+  .TTTbadge {
+    background-color: rgb(0, 0, 0);
+    margin-left: 10px;
+    color: white;
+   /* font-weight: bold;*/
+    text-align: center;
+    border-radius: 50%;
+    text-align: center;
+    padding:5px 5px;
+  }
+
+  .TTTbadge p{
+    width: 20px;
+    /*background-color: #de3902;*/
+  }
+
+  .pp{
+    text-align: left;
+    width: 100%;
+  }
+
+  .TTT.tab{
+    width: 100%;
+    background-color: #3498db;
+  }
+  
+  /* Style the buttons inside the tab */
+  .tab button {
+    background-color: inherit;
+    display: flex;
+    align-items: center;
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    width: 13%;
+    padding: 5px 16px;
+    margin-right: 2px;
+    transition: 0.3s;
+   /* font-size: 15px;*/
+  }
+  
+  /* Change background color of buttons on hover */
+  .tab button:hover {
+    background-color: #ddd;
+  }
+  
+  /* Create an active/current tablink class */
+  .tab button.active {
+    background-color: #0984e3;
+    color: #fff;
+  }
+  
+  /* Style the tab content */
+  .tabcontent {
+   /* border: 1px solid #ccc;*/
+    border-left: none;
+  }
+
+  .AAA{
+    padding-top: 20px;
+    width: 100%;
+    padding-left: 10px;
+    padding-right: 10px;
+    height: 70%;
+    overflow: scroll;
+  /*  background-color: #de3902;*/
+  }
+
+ 
+
+
+  
+
+
+ 
+

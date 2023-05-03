@@ -1,0 +1,290 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai+Looped:wght@300;400;700&family=Noto+Sans+Thai:wght@300&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family:  'Noto Sans Thai', sans-serif;
+    }
+body{
+    background: #f3f3f3ce;
+}
+.home-section{
+    display: flex;
+    justify-content: space-between;
+}
+
+.menuboxtop{
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    height: 45px;
+    background-color:#0984e3;
+}
+
+.menubox{
+    padding-left: 2px;
+    height: 54px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    display: flex;
+    justify-content: space-between;
+}
+
+/*   */ 
+.menubox .b6{
+    background-color: #0984e3;
+    width: 2px;
+}
+
+.menubox .a6 .links_name ,
+.menubox .a6 i {
+    color: #0984e3;
+}
+
+
+.menubox .a1 ,
+.menubox .a2 ,
+.menubox .a3 ,
+.menubox .a4 ,
+.menubox .a5 ,
+.menubox .a6{
+    width: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.menu{
+    box-shadow: 0 0 10px rgba(0, 0, 0.5, 0.5);
+    height: 100vh;
+   /* background-color: chartreuse;*/
+    width: 66px;
+    font-size: 10px;
+}
+.menu a{
+    text-align: center;
+    padding-top: 5px;
+    padding-bottom:5px ;
+    text-decoration: none;
+    color: #000000;
+}
+.menubox{
+    margin-bottom: 1px;   
+   /* background-color: blueviolet;*/
+
+}
+
+.menubox :hover{
+    right: 0;
+    width: 60px;
+    background-color: rgb(255, 255, 255);
+}
+
+.menubox  a:hover .links_name,
+.menubox  a:hover i
+{
+    color: #0984e3;
+}
+
+.menu i{
+    font-size: 25px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;    
+    color: #5f5f5f;
+}
+.menu .links_name{
+    display: flex;
+    align-items: center;
+    justify-content: center;   
+    list-style: none;
+    color: #5f5f5f;
+}
+
+
+
+
+::-webkit-scrollbar { /* ความกว้าง */
+    width: 5px;
+  } 
+::-webkit-scrollbar-thumb {
+    background: #0984e3; 
+    border-radius: 10px;
+}
+.content{
+    height: 100vh;
+    width: 100%;
+   /* background: #d5eeffce; /*#f3f3f3ce*/
+    font-size: 14px;
+}
+.shop-name{
+    /*background-color: #ff0000;*/
+    margin-left: 10px;
+    width: 30%;
+}
+.shop-name p{
+    width: 200px;
+    color: #FFF;
+    font-weight: bold;
+    letter-spacing: 2px; /*เ ว้นวรรคตัวอักษร */
+}
+
+.A{
+    max-height: 95%; /*  */
+    display: flex;
+    justify-content: space-between
+  }
+
+
+.menuboxtop{
+    display:  flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-right: 10px;
+}
+
+
+.total-sum{
+    position: absolute;
+    right: 0px;
+    justify-content: flex-end;
+    padding-right: 10px;
+    width: 50%;
+    display: flex;
+}
+.profile-photo {
+    display: block;
+    width: 2rem;
+    height: 2rem;
+    border-radius:  50%;
+    overflow: hidden;
+    padding-right: 10px;
+    margin-right: 10px;
+}
+.profile-photo img{
+    height: 50px;
+    width: 50px;
+    object-fit: cover;
+}
+.profil-area{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 5rem;
+}
+
+.sub-menu-wrap{
+    position: absolute;
+    top: 43px;
+    right: 10px;
+    width: 300px;
+    max-height: 0px;
+    overflow: hidden;
+    transition: max-height 0.5s;
+}
+.sub-menu-wrap.open-menu{
+    max-height: 400px;
+}
+
+.sub-menu{
+    background-color: #fff;
+    padding: 20px;
+    margin: 10px;
+    border-radius: 5px;
+}
+.usr-into{
+    display: flex;
+    align-items: center;
+    border-bottom: solid 1px #0984e3;
+    padding-bottom: 10px;
+}
+.usr-into h3{
+    font-weight: bold;
+}
+.usr-into img{
+    width: 40px;
+    object-fit: cover;
+    border-radius:  50%;
+    margin-right: 15px;
+}
+
+.sub-menu-link{
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: #525252;
+    margin: 12px 0;
+}
+.sub-menu-link p{
+    width: 100%;
+}
+.sub-menu-link .material-icons{
+    font-size: 20px;
+    text-align: center;
+    background-color: #e5e5e5;
+    border-radius: 50%;
+    padding: 8px;
+    margin-right: 15px;
+}
+.sub-menu-link i{
+    font-size: 22px;
+    transition: transform 0.5s;
+}
+.sub-menu-link:hover i{
+    transform: translateX(5px);
+}
+.sub-menu-link:hover p{
+    font-weight: 600;
+}
+/*Badges in Buttons*/
+.total-sum p{
+    height: 5vh;
+    width: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+   /* background-color: #02a72b;*/
+
+}
+.button {
+    padding-top: 10px;
+	position: relative;
+	border-radius: 4px;
+	/*border: 2px solid white;*/
+	/*padding: 15px 30px;*/
+	color: white;
+	/*background: rgba(0,0,0,.1);*/
+	/*box-shadow: 0 2px 10px rgba(0,0,0,.15);*/
+	cursor: pointer;
+	user-select: none;
+	transition: all .3s;
+    width: 40px;
+}
+.button i{
+    font-size: 25px;
+}
+.button i:hover{
+    color: #525252;
+}
+
+
+.badge {
+	border-radius: 50%;
+    font-size: 13px;
+	width: 20px;
+	height: 20px;
+	display: block;
+	position: absolute;
+	background: #de3902;
+    box-shadow: 0 2px 10px rgba(0,0,0,.15);
+	/*border: 2px solid white;*/
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	top: 3px;
+	right: 5px;
+	transition: all .3s;
+}
+/* จบ */

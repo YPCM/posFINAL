@@ -1,0 +1,904 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai+Looped:wght@300;400;700&family=Noto+Sans+Thai:wght@300&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family:  'Noto Sans Thai', sans-serif;
+    }
+body{
+    background: #f3f3f3ce;
+}
+
+
+.home-section{
+    display: flex;
+    justify-content: space-between;
+}
+
+.menuboxtop{
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    height: 45px;
+    background-color:#0984e3;
+}
+
+.menubox{
+    padding-left: 2px;
+    height: 54px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    display: flex;
+    justify-content: space-between;
+}
+
+/*   */ 
+.menubox .b2{
+    background-color: #0984e3;
+    width: 2px;
+}
+
+.menubox .a2 .links_name ,
+.menubox .a2 i {
+    color: #0984e3;
+}
+
+
+.menubox .a1 ,
+.menubox .a2 ,
+.menubox .a3 ,
+.menubox .a4 ,
+.menubox .a5 ,
+.menubox .a6{
+    width: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.menu{
+    box-shadow: 0 0 10px rgba(0, 0, 0.5, 0.5);
+    height: 100vh;
+   /* background-color: chartreuse;*/
+    width: 66px;
+    font-size: 10px;
+}
+.menu a{
+    text-align: center;
+    padding-top: 5px;
+    padding-bottom:5px ;
+    text-decoration: none;
+    color: #000000;
+}
+.menubox{
+    margin-bottom: 1px;   
+   /* background-color: blueviolet;*/
+
+}
+
+.menubox :hover{
+    right: 0;
+    width: 60px;
+    background-color: rgb(255, 255, 255);
+}
+
+.menubox  a:hover .links_name,
+.menubox  a:hover i
+{
+    color: #0984e3;
+}
+
+.menu i{
+    font-size: 25px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;    
+    color: #5f5f5f;
+}
+.menu .links_name{
+    display: flex;
+    align-items: center;
+    justify-content: center;   
+    list-style: none;
+    color: #5f5f5f;
+}
+
+
+
+
+::-webkit-scrollbar { /* ความกว้าง */
+    width: 1px;
+  } 
+::-webkit-scrollbar-thumb {
+    background: #0984e3; 
+    border-radius: 10px;
+}
+
+.s{
+  width: 100%;
+  height: 100vh;
+  overflow-x: scroll;
+  background-color: #2e36cc00;
+}
+.content{
+    height: 100vh;
+    width: 100%;
+   /* background: #d5eeffce; /*#f3f3f3ce*/
+    font-size: 14px;
+}
+.shop-name{
+    /*background-color: #ff0000;*/
+    margin-left: 10px;
+    width: 30%;
+}
+.shop-name p{
+    width: 200px;
+    color: #FFF;
+    font-weight: bold;
+    letter-spacing: 2px; /*เ ว้นวรรคตัวอักษร */
+}
+
+
+.menuboxtop{
+    display:  flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-right: 10px;
+}
+
+
+.total-sum{
+    position: absolute;
+    right: 0px;
+    justify-content: flex-end;
+    padding-right: 10px;
+    width: 50%;
+    display: flex;
+}
+
+.navbar  .h .mybtn i{
+    font-size: 30px;
+  }
+  
+  .navbar  .h .mybtn a{
+    font-size: 15px;
+    width: 130px;
+    padding-left: 20px;
+    padding-right: 5px;
+    cursor: pointer;
+    border-radius: 50px;
+    height: 5vh;
+    margin-left: 10px;
+    background-color: #e0f2ff;
+    color: #06528c;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.10);
+  }
+  
+
+
+
+
+/*Badges in Buttons*/
+.total-sum p{
+    height: 5vh;
+    width: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+   /* background-color: #02a72b;*/
+
+}
+/* จบ */
+
+
+.text{
+    display: flex;
+    justify-content: start;
+    /*background-color: #07e20e;*/
+    margin-top: 5px;
+    width: 100%;
+    padding-left: 20px;
+    height:4%;
+   /* background-color: #2ecc71;*/
+    align-items: center;
+}
+
+.pro_{
+    padding-left: 20px;
+    display: grid;
+    grid-template-columns: repeat(6,1fr);
+    grid-template-rows: repeat(auto-fill,100px);
+    grid-gap: 10px;
+    color: #333333;
+    cursor: pointer;
+    align-items: center;
+}
+.pro_ .box{
+    height: 90px;
+    padding: 0px 20px 0px 20px; /* บน ซ้าย ล่าง ขวา */
+   /* border-radius: 10px;*/
+    align-items: center;
+    /*background-color: #1abc9c;*/
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+ 
+
+
+
+.boxitem{
+    display: flex;
+    justify-content: space-between;
+   /* background-color: #2ecc71;*/
+}
+.boxitem .box1_boxitem{
+    display: flex;
+}
+.iconboxitem i{
+   /* background-color: #0984e3;*/
+    height: 100%;
+    display: flex;
+    align-items: center;
+    font-size: 30px;
+    margin-left: 5px;
+}
+.box1_boxitem{
+    display: flex;
+    justify-content: space-between;
+}
+.box1_boxitem .list2_boxitem{
+    font-size: 12px; 
+    color: #d63031;  
+}
+
+
+
+
+.number_pro{
+    padding-top: 2px;
+    font-weight: bold;
+    font-size: 20px;
+}
+.box i{
+    font-size: 25px;
+}
+
+.box1{
+    display: flex;
+    justify-content: space-between;
+}
+.box1 .list2{
+    font-size: 12px;
+    color: #d63031;
+}
+
+
+
+
+
+
+
+.run_out i,.run_out .number_pro,.run_out .list{
+    color: rgb(255, 255, 255);
+}
+.run_out{
+    background-color: #d63031;
+}
+
+.almost_gone i,.almost_gone .number_pro,.almost_gone .list{
+    color: rgb(255, 255, 255);
+}
+.almost_gone{
+    background-color: #e67e22;
+}
+
+.ready_sale i,.ready_sale .number_pro,.ready_sale .list{
+    color: rgb(255, 255, 255);
+}
+.ready_sale{
+    background-color: #2ecc71;
+}
+
+
+.total{
+    padding-left: 20px;
+    align-items: center;
+    margin-top: 5px;
+    height:4%;
+   /* background-color: #2ecc71;*/
+    display: flex;
+    margin-bottom: 10px;
+}
+/*
+.pro_list{
+    margin-left: 20px;
+    margin-right: 20px;
+    background-color: #ffffff;
+}*/
+/*
+.tap{
+    padding: 5px 5px 5px 5px;
+    display: flex;
+    align-items: center;
+    background-color: #70c1ff;
+    height: 7vh;
+}*/
+.category{
+    height: 100%;
+    width: 20%;
+    cursor: pointer;
+}
+.category .form-control{   
+    background-color:  #0984e3;
+    color: #FFF;
+    font-size: 16px;
+    width: 100%;
+    height: 100%;
+    border: none;
+    outline: none;
+}
+
+
+
+.product_list{
+    width: 98%;
+    min-height: 40vh;
+    /*background-color: #5dade2;*/
+    margin: 10px 10px 10px 10px;
+}
+
+.aa{
+    bottom: 20px;
+    right: 15px;
+    position: absolute;
+}
+.add{
+    height: 50px;
+    width: 50px;
+    font-size: 30px;
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #0984e3;
+    color: #f0f8ff;
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+.add:hover{
+    color: #000;
+}
+
+.add-manu i{
+   /* margin-left: 5px;*/
+    margin-bottom: 3px;
+    height: 50px;
+    width: 50px;
+    font-size: 20px;
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #020202;
+    color: #ffffff;
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+.add-manu {
+    list-style: none;
+
+
+}
+.action{
+  /*background-color: #000000;*/
+  bottom: 8px;
+  right: 15px;
+  position: absolute;
+}
+
+/*ปุ่มเพิ่ม*/
+ /* Popup container - can be anything you want */
+.popup {
+    position: relative;
+  /*  display: inline-block;*/
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+  
+  /* The actual popup */
+  .popup .popuptext {
+    visibility: hidden;
+    /*background-color: #555;*/
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 8px 0;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%;
+    left: 50%;
+    margin-left: -25px;
+  }
+  
+  /* Popup arrow */
+  .popup .popuptext::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    right: 40%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #555 transparent transparent transparent;
+  }
+  
+  .add-manu i:hover{
+    background-color: #0984e3;
+    color: #000000;
+  }
+
+
+  /* Toggle this class - hide and show the popup */
+  .popup .show {
+    visibility: visible;
+    -webkit-animation: fadeIn 1s;
+    animation: fadeIn 1s;
+  }
+  
+  /* Add animation (fade in the popup) */
+  @-webkit-keyframes fadeIn {
+    from {opacity: 0;} 
+    to {opacity: 1;}
+  }
+  
+  @keyframes fadeIn {
+    from {opacity: 0;}
+    to {opacity:1 ;}
+  }
+
+
+  
+/*modal*/
+.modal {
+    padding-top: 15px;
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */ 
+    padding-top: 50px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100vh; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0,0.3); /* Fallback color */
+   /* background-color: rgba(0,0,0,0.3); /* Black w/ opacity */
+  }
+  
+  /* Modal Content */
+  .modalcontent { 
+    background-color: #fefefe;
+    margin: auto;
+   /* padding: 30px 50px;*/
+    /*border-radius: 5px;*/
+    box-shadow: 0 2px 4px rgba(0,0,0,0.4);
+    /*border: 1px solid #888;*/
+    width: 500px;
+  }
+  
+.modalcontent .modal-header{
+    color: rgb(0, 0, 0);
+    background-color: #0985e300;
+    padding-left: 30px;
+    padding-right: 15px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 5px;
+    cursor: pointer;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.10);
+  }
+  
+
+  .modalcontent p{
+    opacity: 0.7;
+    font-size: 16px;
+  }
+  
+  /*.modal-content .modal-body{
+    overflow: scroll;
+    /*
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  /*
+  .modal-content .modal-footer{
+    bottom: 0;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    background-color: #0985e300;
+    color: rgb(0, 0, 0);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.10);
+    background-color: #0984e3;
+   /* background-color: #0984e3 ;*/
+  
+
+
+
+  /* The Close Button ปิด */
+  .close1 {
+    margin: 0;
+    color: #0984e3;
+    float: right;
+    font-size: 21px;
+    font-weight: bold;
+  }
+  
+  .close1:hover,
+  .close1:focus {
+    color: #a3d3f8;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+  .close2 {
+    margin: 0;
+    color: #0984e3;
+    float: right;
+    font-size: 21px;
+    font-weight: bold;
+  }
+  
+  .close2:hover,
+  .close2:focus {
+    color: #a3d3f8;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+
+
+ 
+
+ 
+
+ .modal input[type=text], .modal select {
+    width: 100%;
+    padding: 8px 20px;
+    margin: 2px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    outline: none;
+  }
+  
+  .modal input[type=file], .modal select {
+    width: 100%;
+    padding-top:8px ;
+    padding-bottom: 8px;
+  /* padding: 12px 20px;*/
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+  
+  input[type=submit] {
+    width: 100%;
+    background-color: #0984e3;
+    color: white;
+    padding: 14px 20px;
+    margin-top: 8px;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+  }
+
+  input[type=submit]:hover {
+    color: #0984e3;
+    background-color: #bddff8;
+  }
+  
+  .modal-body .modalLR{
+    padding: 0px 20px 0px 20px; /* บน ซ้าย ล่าง ขวา */
+  }
+
+  label {
+    font-size: 14px;
+  }  
+
+
+
+
+  
+
+  .total_list{
+    height: 100%;
+    margin-top: 5px;
+    padding-top: 1px; 
+    display: flex; 
+    justify-content: space-between;
+   /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.10);*/
+}
+.food{
+     width: 100%;
+   /* margin: 5px 5px 0px 5px;*/
+}
+
+
+
+
+.number_list{
+    margin: 10px 10px 10px 10px;
+    width: 98%;
+    height: 5vh;
+    /*background-color: #1d1b31;*/
+    color: rgb(0, 0, 0);
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    border-bottom: solid 1px rgb(108, 108, 108);
+    border-top: solid 1px rgb(108, 108, 108);
+}
+
+
+
+
+.search_tap{
+  /*  background-color: #0984e3;*/
+    font-size: 16px;
+   /* margin-left: 5px;*/
+    width: 100%;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.10);
+    display: flex;
+    height: 6vh;
+    margin-bottom: 5px;
+}
+.search_tap .form-search{
+    font-size: 16px;
+    width: 100%;
+    height: 100%;
+    padding-left: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    border: none;
+    outline: none;
+    background-color: #ffffff00;
+    letter-spacing: 1px;
+}
+.search_tap .btn-search{
+    display: flex;
+    align-items: center;
+    padding-left: 10px;
+    padding-right: 20px;
+    border: none;
+    outline: none;
+    background-color: #ffffff00;
+}
+.search_tap .btn-search i{
+    color: #000000;
+    font-size: 25px;
+}
+
+ table tbody .status{
+  cursor: pointer;
+}
+
+
+
+
+
+
+
+/*
+.head{
+    width: 100%;
+    height: 5vh;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    color  :#fff;
+   /* background-color: #000000;
+    font-size: 18px;
+}
+.head p{
+    width: 100%;
+    height: 100%;
+    font-size: 16px;
+    padding-left: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+ /*   margin: 5px 10px 0px 10px;
+    background-color: #000000;
+}*/
+  /* ตาราง */
+  
+  .totalscroll{
+    max-height: 80%;
+    overflow-x: scroll;
+  }
+  table {
+    border-collapse: collapse;
+    width: 100%;
+  }
+ 
+  th{
+    position: static;
+    font-size: 16px;
+    color: #fff;
+    background-color: #0984e3;
+  }
+  th, td {
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+    text-align: right;
+  }
+
+tr td .btn.delete{
+    background-color: #d63031;
+}
+tr td .btn.edit{
+    background-color: #0984e3;
+}
+tr td a{
+    padding: 1px 15px 0px 15px;
+    color: #fff;
+}
+td .nodata{
+
+    text-align: center;
+}
+tr:nth-child(even) {
+    background-color: #f2f2f274;
+}
+
+
+tr td img{
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+
+
+
+/* tr:nth-child(even) {background-color: #f2f2f2;} */
+
+
+/*
+.btn{
+    width: 30px;
+    height: 30px;
+    font-size: 16px;
+    margin-right: 10px;
+    border-radius: 5px;
+    outline: none;
+    border-bottom: solid 0px rgb(108, 108, 108);
+    border: 0;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.10);
+    text-align: center;
+}
+
+.header__item_5 .edit{
+    background-color: #f6b93b;
+}
+.header__item_5 .edit:hover{
+    color: #fff;
+}
+.header__item_5 a .delete{
+    text-align: ;
+    background-color: #d63031;
+}
+.header__item_5 a .delete:hover{
+    color: #fff;
+}
+
+
+
+.header__item_5{
+    padding-right: 5px;
+    width: 15%;
+   /* background-color: #2ecc71;
+}
+
+*/  
+
+
+.boxx{   
+    /*  padding: 20px 20px 20px 20px;*/
+   /* margin-top: 10px;*/
+   margin-left: 20px;
+   margin-right: 20px;
+    height: 100%;
+
+    background-color: #ffffff;
+  }
+  .boxS{
+      padding: 0px 0px 0px 0px;
+  /*    margin-left: 20px;
+      margin-right: 20px;*/
+      border-radius: 3px;
+     /* height: 100%;*/
+    /*  background-color: #e60202;*/
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.02);
+  } 
+  .box3{
+    padding: 0px 10px 5px 10px;
+  }
+  .danger {
+    height: 45px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    background-color: #ffffff;
+    padding-left: 10px;
+   /* border-left: 6px solid #f44336;*/
+  }
+  .tab {
+    float: left;
+   /* border: 1px solid #ccc;*/
+    background-color: #f1f1f15d;
+    width: 15%;
+    height: 100%;
+}
+.tab .tablinks i{
+    font-size: 20px;
+    padding-right: 10px;
+}
+
+  /* Style the buttons that are used to open the tab content */
+  .tab button {
+    display: flex;
+    align-items: center;
+    background-color: inherit;
+    color: black;
+    padding: 22px 16px;
+    height: 45px;
+    width: 100%;
+    border: none;
+    outline: none;
+    text-align: left;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+  
+  /* Change background color of buttons on hover */
+.tab button:hover {
+    background-color: #ffffff;
+  }
+  
+  /* Create an active/current "tab button" class */
+  .tab button.active,
+  .tab .tablinks i :active {
+    /*background-color: #0985e3b3;*/
+    border-left: 2px solid #0984e3;
+    color: #0984e3;
+    font-weight: bold;
+  }
+  
+  /* Style the tab content */
+  .tabcontent {
+    float: left;
+   /* padding: 12px 12px;*/
+   /* border: 1px solid #ccc;*/
+    width: 85%;
+    border-left: none;
+    /*background-color: #000000;*/
+  }
+
+

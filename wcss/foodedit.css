@@ -1,0 +1,294 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai+Looped:wght@300;400;700&family=Noto+Sans+Thai:wght@300&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family:  'Noto Sans Thai', sans-serif;
+    }
+body{
+    background: #f3f3f3ce;
+}
+.home-section{
+    display: flex;
+    justify-content: space-between;
+}
+
+
+.menubox{
+    padding-left: 2px;
+    height: 54px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    display: flex;
+    justify-content: space-between;
+}
+
+/*   */ 
+.menubox .b2{
+    background-color: #0984e3;
+    width: 2px;
+}
+
+.menubox .a2 .links_name ,
+.menubox .a2 i {
+    color: #0984e3;
+}
+
+
+
+.menubox .a1 ,
+.menubox .a2 ,
+.menubox .a3 ,
+.menubox .a4 ,
+.menubox .a5 ,
+.menubox .a6{
+    width: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+
+.menu{
+    box-shadow: 0 0 10px rgba(0, 0, 0.5, 0.5);
+    height: 100vh;
+   /* background-color: chartreuse;*/
+    width: 66px;
+    font-size: 10px;
+}
+.menu a{
+    text-align: center;
+    padding-top: 5px;
+    padding-bottom:5px ;
+    text-decoration: none;
+    color: #000000;
+}
+.menubox{
+    margin-bottom: 1px;   
+   /* background-color: blueviolet;*/
+
+}
+
+.menubox :hover{
+    right: 0;
+    width: 60px;
+    background-color: rgb(255, 255, 255);
+}
+
+.menubox  a:hover .links_name,
+.menubox  a:hover i
+{
+    color: #0984e3;
+}
+
+.menu i{
+    font-size: 25px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;    
+    color: #5f5f5f;
+}
+.menu .links_name{
+    display: flex;
+    align-items: center;
+    justify-content: center;   
+    list-style: none;
+    color: #5f5f5f;
+}
+
+
+
+
+::-webkit-scrollbar { /* ความกว้าง */
+    width: 1px;
+  } 
+::-webkit-scrollbar-thumb {
+    background: #0984e3; 
+    border-radius: 10px;
+}
+.content{
+    height: 100vh;
+    width: 100%;
+    background: #d5eeffce; /*#f3f3f3ce*/
+    font-size: 14px;
+}
+.shop-name{
+    /*background-color: #ff0000;*/
+    margin-left: 10px;
+    width: 30%;
+}
+.shop-name p{
+    width: 200px;
+    color: #FFF;
+    font-weight: bold;
+    letter-spacing: 2px; /*เ ว้นวรรคตัวอักษร */
+}
+
+.A{
+    max-height: 95%; /*  */
+    display: flex;
+    justify-content: space-between
+  }
+
+
+
+.total-sum{
+    position: absolute;
+    right: 0px;
+    justify-content: flex-end;
+    padding-right: 10px;
+    width: 50%;
+    display: flex;
+}
+
+/* จบ */
+
+.contentedit{
+    width: 100%;
+}
+
+.text{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    /*background-color: #07e20e;*/
+   /* background-color: #2ecc71;*/
+}
+.text2{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding-top: 10px;
+   /* background-color: #a407e2;*/
+}
+
+.text3{
+    width: 40%;
+    background-color: #fdfeff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.Stockfood{
+    font-size: 16px;
+    width: 40%;
+    height:6vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    color: #fff;
+    background-color: #0984e3;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+.Stockfood i{
+    font-size: 20px;
+    width: 5%;
+   /* background-color: #bddff8;*/
+}
+.formedit{
+    text-align: start;   
+    padding: 10px 20px 10px 20px; /* บน ซ้าย ล่าง ขวา */
+}
+
+
+/* form */
+.none{
+    height: 1px;
+   visibility:hidden;
+}
+.T{
+    display: flex;
+    margin-bottom: 5px;
+    padding-bottom: 10px;
+    border-bottom: solid 1px rgb(108, 108, 108);
+}
+.codeedit{
+    font-weight: bold;
+    display: flex;
+}
+.codeedit p{
+    width: 50;
+    margin-left: 5px;
+    margin-right: 5px;
+    text-align: center;
+    color: #fff;
+    background-color: #d63031;
+}
+.text2 input[type=text],  select {
+    width: 100%;
+    padding: 8px 20px;
+    margin: 2px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    outline: none;
+  }
+  
+  .text2 input[type=file],  select {
+    width: 100%;
+    padding-top:8px ;
+    padding-bottom: 8px;
+  /* padding: 12px 20px;*/
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+  
+  input[type=submit] {
+    width: 100%;
+    background-color: #0984e3;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    margin-top: 30px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+  }
+
+  input[type=submit]:hover {
+    color: #0984e3;
+    background-color: #bddff8;
+  }
+  
+  
+  ul.breadcrumb {
+    padding-top: 10px;
+    padding-left: 20px;
+    list-style: none;
+  }
+  
+  /* Display list items side by side */
+  ul.breadcrumb li {
+    display: inline;
+  }
+  
+  /* Add a slash symbol (/) before/behind each list item */
+  ul.breadcrumb li+li:before {
+    padding: 8px;
+    color: black;
+    content: "/\00a0";
+  }
+  
+  /* Add a color to all links inside the list */
+  ul.breadcrumb li a {
+    color: #0275d8;
+    text-decoration: none;
+  }
+  
+  /* Add a color on mouse-over */
+  ul.breadcrumb li a:hover {
+    color: #01447e;
+    text-decoration: underline;
+  }
+ 

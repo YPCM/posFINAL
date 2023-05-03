@@ -1,0 +1,17 @@
+
+.sitp{
+    width: 300px;
+    margin: 0 auto;
+    text-align: center;
+}
+.list-item{
+    margin-bottom: 1px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+ /*  background-color: aqua;*/
+}
+.list-item-summary {
+    font-weight: bold;
+}

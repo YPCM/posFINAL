@@ -1,0 +1,221 @@
+.navber{
+    padding-left: 80px;
+    height: 6vh;
+    display: flex;
+    align-items: center;
+    background-color:#0984e3;
+}
+.navber .he {
+    color: #ffffff;
+    width: 100%;
+    /*background-color: black;*/
+}
+.navber .myBtn2{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 10%;
+    border-radius: 50px;
+    border: none;
+    margin-right: 10px;
+    height: 80%;
+}
+.navber .myBtn2 p{
+    color: #000000;
+   /* background-color: aqua;*/
+    width: 100%;
+}
+.navber .myBtn2 i{
+    font-size: 30px;
+}
+.navber .content {
+    background-color: #ffffff00;
+}
+
+
+.navber .myBtn2:hover{
+    color: #000000;
+    background-color: #3c95da;
+}
+
+.navber .button {
+    padding-top: 10px;
+	position: relative;
+	border-radius: 4px;
+	/*border: 2px solid white;*/
+	/*padding: 15px 30px;*/
+	color: white;
+	/*background: rgba(0,0,0,.1);*/
+	/*box-shadow: 0 2px 10px rgba(0,0,0,.15);*/
+	cursor: pointer;
+	user-select: none;
+	transition: all .3s;
+    width: 40px;
+    margin-right: 10px;
+}
+.navber .button i{
+    font-size: 25px;
+}
+.navber .button i:hover{
+    color: #525252;
+}
+
+
+.navber .badge {
+	border-radius: 50%;
+  font-size: 13px;
+	width: 20px;
+	height: 20px;
+	display: block;
+	position: absolute;
+	background: #de3902;
+    box-shadow: 0 2px 10px rgba(0,0,0,.15);
+	/*border: 2px solid white;*/
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	top: 3px;
+	right: 0px;
+	transition: all .3s;
+}
+
+
+
+
+
+
+.modalid01 {
+    display: none; /* Hidden by default */
+   /* display: flex;
+    align-items: center;
+    justify-content: center;*/
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+   /* background-color: rgb(0,0,0); /* Fallback color */
+   /* background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    padding-top: 60px;
+    border-radius: 5px;
+  }
+  
+  .modalid01:target {
+    visibility: visible;
+    opacity: 1;
+  }
+
+ 
+  .modal__content {
+     position: absolute;
+     border-radius: 4px;
+     right: 0px;
+     margin-right: 20px;
+   /* position: relative;*/
+     width:300px;
+    /* height: 80%;
+     max-width: 90%;*/
+     background: #fff;
+     border-radius: 5px;
+     box-shadow: 0 0 10px rgba(0, 0, 0, 0.20);
+   /*padding: 1em 2em;*/
+  }
+  
+  .modal__content .modal-header{
+    /*background-color: #0984e3;*/
+     border-bottom: solid 1px #bdbdbd;
+     margin: 10px 12px;
+     padding: 5px 10px;
+     display: flex;
+     align-items: center;
+     justify-content: space-between;
+     cursor: pointer;
+  }
+  .modal__content .modal-header p{
+    width: 40%;
+   /* background-color: aqua;*/
+    font-size: 15px;
+    color: #000000;
+    font-weight: bold;
+  }
+
+  .modal__content .modal-header .dark{
+    /*background-color: #e9e9e9d2;*/
+    width: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 40px;
+    border-radius: 50px;
+    border: none;
+    color: #000000;
+  }
+  .modal__content .modal-body{
+    /*background-color: #000204;*/
+    height: 100%;
+    width: 100%;
+    padding: 8px 12px;
+    font-size: 15px;
+  }
+ 
+
+ 
+ .modal-body .a{
+   background-color: #ffffff00;
+   margin-bottom: 10px;
+   margin-left: 10px;
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+   cursor: pointer;
+ }
+ 
+ .modal-body .a span{
+   background-color: #e9e9e9d2;
+   border-radius: 50px;
+   font-size: 15px;
+   width: 40px;
+   height: 40px;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   border-radius: 50px;
+ }
+ .modal-body .a  i{
+   font-size: 20px;
+   width: 45%;
+   padding-right: 10px;
+    text-align: end;
+   transition: transform 0.5s;
+  /* background-color: #0984e3;*/
+ }
+
+
+
+ .modal-body .a i:hover{
+    transform: translateX(5px);
+}
+
+
+
+ .modal-body a{
+   text-decoration: none;
+   color: #000000;
+ }
+ .modal-body .a p{
+    width: 30%;
+   margin-left: 10px;
+   color: #000000;
+  /* background-color: #de3902;*/
+ }
+
+
+
+ .dark-mode {
+    background-color: rgb(22, 22, 22);
+   /* color: #ffffff; */
+  }
+  
+
