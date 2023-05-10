@@ -1053,11 +1053,25 @@ if(isset($_POST['date'])){
                                             <th style="text-align: end;">ยอดรวม</th>
                                         </tr>
                                     </thead>
-                                    <?php 
+                                    <?php                                          
                                        $date_m_ =date("m");
                                        $date_y_ =date("y");
                                        $date_d_ =date("d");
-                               
+                                        //รวมยอด
+                                        $sumtoday = mysqli_query($connect, "SELECT SUM(all_food_prices)AS sumtodayy FROM `sales_history` WHERE `date_time` BETWEEN '$date_y_-$date_m_-$date_d_ 00:00:00.000000' AND '$date_y_-$date_m_-$date_d_ 23:59:59.000000' ");
+                                        $row_sumtoday = mysqli_fetch_assoc($sumtoday);
+
+                                        $totalcnt = mysqli_num_rows($sumtoday);
+
+                                        $sumtpday0 = $row_sumtoday['sumtodayy'];
+
+                                        if(empty($sumtpday0)) {
+                                            $sumtodayS = '0' ;
+                                        }else{
+                                            $sumtodayS = $sumtpday0 ;
+                                        }
+
+
                                        $sql_report_today = mysqli_query($connect, "SELECT * FROM `sales_history` WHERE `date_time` BETWEEN '$date_y_-$date_m_-$date_d_ 00:00:00.000000' AND '$date_y_-$date_m_-$date_d_ 23:59:59.000000' ORDER BY `receipt` DESC "); 
                                        $num_report_today = mysqli_num_rows($sql_report_today);
                                        if($num_report_today>0){
@@ -1072,17 +1086,9 @@ if(isset($_POST['date'])){
                                                 $order_list_today = mysqli_query($connect, "SELECT * FROM `order_list` WHERE `order_code`= '$sql_report_order_today' ");
                                                 $roworder_list_today = mysqli_fetch_assoc($order_list_today);
 
-                                                //รวมยอด
-                                                $sumtoday = mysqli_query($connect, "SELECT SUM(all_food_prices)AS sumtodayy FROM `sales_history` WHERE `date_time` BETWEEN '$date_y_-$date_m_-$date_d_ 00:00:00.000000' AND '$date_y_-$date_m_-$date_d_ 23:59:59.000000' ");
-                                                $row_sumtoday = mysqli_fetch_assoc($sumtoday);
+                                             
 
-                                            
 
-                                                if($row_sumtoday['sumtodayy']==''){
-                                                    $sumtodayS = '0';
-                                                }else{
-                                                    $sumtodayS = number_format($row_sumtoday['sumtodayy'],2);
-                                                }
                                                 
                                     ?>
                                     <tbody>
@@ -1098,25 +1104,25 @@ if(isset($_POST['date'])){
                                                 <?php }else{ ?> 
                                                         <td><div class="payI"><i class="bx bx-scan"></i>QR code</td></div></td>  
                                                 <?php } ?>
+
+                                                
                                                 
                                             
                                             <td style="text-align: end;" ><?php echo number_format($row_report_today['all_food_prices'],2)?></td> 
                                         </tr>
                                     </tbody>
-                                
                                    
-                                    <?php } }else{  ?>
-                                      
-                                    <tfoot style=" background-color: #f2f2f2;color: #000000;font-weight: bold; ">
+                                   
+                                    <?php } } else { ?>
                                         <tr>
-                                            <td colspan="6" style="text-align: center;">ไม่พบข้อมมูล</td>
+                                            <td colspan="7" style="text-align: center;" >ไม่มีข้อมูล</td>
                                         </tr>
-                                    </tfoot>
                                     <?php } ?>
+                                
                                     <tfoot style=" background-color: #f2f2f2;color: #000000;font-weight: bold;">
                                         <tr>
                                             <td colspan="5">รวม</td>
-                                            <td style="text-align: end;"><?php  echo  "฿ ".$sumtodayS ;?></td>
+                                            <td style="text-align: end;"><?php  echo  "฿ ". number_format($sumtodayS,2) ;?></td>
                                         </tr>
                                     </tfoot>
                                    
@@ -1179,7 +1185,18 @@ if(isset($_POST['date'])){
                                        $date_m_ =date("m");
                                        $date_y_ =date("y");
                                        $date_d_ =date("d");
-                               
+
+                                        //รวมยอด
+                                        $summ = mysqli_query($connect, "SELECT SUM(all_food_prices)AS summ   FROM `sales_history` WHERE `date_time` BETWEEN '$date_y_-$date_m_-01 00:00:00.000000' AND '$date_y_-$date_m_-$date_d_ 23:59:59.000000' ");
+                                        $rowsumm = mysqli_fetch_assoc($summ);
+                                        $sumtoday = number_format($rowsumm['summ'],2);
+
+                                        if($rowsumm['summ'] = ''){
+                                            $sumtodayM = '0' ;
+                                        }else{
+                                            $sumtodayM = $sumtoday;
+                                        }
+
                                        $sql_report_today = mysqli_query($connect, "SELECT * FROM `sales_history` WHERE `date_time` BETWEEN '$date_y_-$date_m_-01 00:00:00.000000' AND '$date_y_-$date_m_-$date_d_ 23:59:59.000000' ORDER BY `receipt` DESC"); 
                                        $num_report_today = mysqli_num_rows($sql_report_today);
                                        if($num_report_today>0){
@@ -1194,19 +1211,7 @@ if(isset($_POST['date'])){
                                                 $order_list_today = mysqli_query($connect, "SELECT * FROM `order_list` WHERE `order_code`= '$sql_report_order_today' ");
                                                 $roworder_list_today = mysqli_fetch_assoc($order_list_today);
 
-                                                 //รวมยอด
-                                                 $summ = mysqli_query($connect, "SELECT SUM(all_food_prices)AS summ   FROM `sales_history` WHERE `date_time` BETWEEN '$date_y_-$date_m_-01 00:00:00.000000' AND '$date_y_-$date_m_-$date_d_ 23:59:59.000000' ");
-                                                 $rowsumm = mysqli_fetch_assoc($summ);
-
-                                                $tyt = $row_report_today['receipt'];
-
-                                                $sumtoday = number_format($rowsumm['summ'],2);
-
-                                                if($rowsumm['summ'] = ''){
-                                                    $sumtodayS = '0' ;
-                                                }else{
-                                                    $sumtodayS = $sumtoday;
-                                                }
+                                                 
                                     ?>
                                     <tbody>
                                         <tr>        
@@ -1237,7 +1242,7 @@ if(isset($_POST['date'])){
                                     <tfoot style=" background-color: #f2f2f2;color: #000000;font-weight: bold;">
                                         <tr>
                                             <td colspan="5">รวม</td>
-                                            <td style="text-align: end;"><?php  echo  "฿ ".$sumtodayS ;?></td>
+                                            <td style="text-align: end;"><?php  echo  "฿ ".number_format($sumtodayM,2) ;?></td>
                                         </tr>
                                     </tfoot>
                                 </table>
@@ -1299,6 +1304,18 @@ if(isset($_POST['date'])){
                                        $date_y_ =date("y");
                                        $date_d_ =date("d");
                                
+                                            //รวมยอด
+                                            $sumy = mysqli_query($connect, "SELECT SUM(all_food_prices)AS sumy   FROM `sales_history` WHERE `date_time` BETWEEN '$date_y_-01-01 00:00:00.000000' AND '$date_y_-12-31 23:59:59.000000' ");
+                                            $rowsumy = mysqli_fetch_assoc($sumy);
+
+                                            $sumtoday = number_format($rowsumy['sumy'],2);
+
+                                            if($rowsumy['sumy'] = ''){
+                                                $sumtodayY = '0' ;
+                                            }else{
+                                                $sumtodayY = $sumtoday;
+                                            }
+
                                        $sql_report_today = mysqli_query($connect, "SELECT * FROM `sales_history` WHERE `date_time` BETWEEN '$date_y_-01-01 00:00:00.000000' AND '$date_y_-12-31 23:59:59.000000' ORDER BY `receipt` DESC "); 
                                        $num_report_today = mysqli_num_rows($sql_report_today);
                                        if($num_report_today>0){
@@ -1313,17 +1330,7 @@ if(isset($_POST['date'])){
                                                 $order_list_today = mysqli_query($connect, "SELECT * FROM `order_list` WHERE `order_code`= '$sql_report_order_today' ");
                                                 $roworder_list_today = mysqli_fetch_assoc($order_list_today);
 
-                                                //รวมยอด
-                                                $sumy = mysqli_query($connect, "SELECT SUM(all_food_prices)AS sumy   FROM `sales_history` WHERE `date_time` BETWEEN '$date_y_-01-01 00:00:00.000000' AND '$date_y_-12-31 23:59:59.000000' ");
-                                                $rowsumy = mysqli_fetch_assoc($sumy);
-
-                                                $sumtoday = number_format($rowsumy['sumy'],2);
-
-                                                if($rowsumy['sumy'] = ''){
-                                                    $sumtodayS = '0' ;
-                                                }else{
-                                                    $sumtodayS = $sumtoday;
-                                                }
+                                           
                                                 
                                     ?>
                                     <tbody>
@@ -1354,7 +1361,7 @@ if(isset($_POST['date'])){
                                     <tfoot style=" background-color: #f2f2f2;color: #000000;font-weight: bold;">
                                         <tr>
                                             <td colspan="5">รวม</td>
-                                            <td style="text-align: end;"><?php  echo  "฿ ".$sumtodayS ;?></td>
+                                            <td style="text-align: end;"><?php  echo  "฿ ".number_format($sumtodayY,2)  ;?></td>
                                         </tr>
                                     </tfoot>
                                 </table>
