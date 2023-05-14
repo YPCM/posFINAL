@@ -145,386 +145,390 @@ if (isset($_GET['exit'])) {
     <div class="boxuser">    
         <div class="TTT">
 
-            <div class="tab">
-                <button  style="background-color:#f1c40f; " class="tablinks" onclick="openmenu(event, 'P1')" id="defaultOpen"><i style="text-align: center; padding-right: 5px;" class='bx bxs-dish'></i><div class="pp">รอชำระเงิน</div>
-                <span class="TTTbadge">
-                    <p>
-                        <?php 
-                            $query =  mysqli_query($connect, "SELECT id_payment_status, COUNT(order_code) as s2total FROM order_list WHERE 	id_payment_status=02 GROUP BY 	id_payment_status");
-                            $rows0 = mysqli_fetch_array($query);
-                            if($rows0>0){
-                                echo $rows0['s2total'];
-                            }else{
-                                echo "0";
-                            }
+        <div class="tab">
+                            <button  style="background-color:#f1c40f; " class="tablinks" onclick="openmenu(event, 'P1')" id="defaultOpen"><i style="text-align: center; padding-right: 5px;" class='bx bxs-dish'></i><div class="pp">รอชำระเงิน</div>
+                            <span class="TTTbadge">
+                                <p>
+                                    <?php 
+                                        $query =  mysqli_query($connect, "SELECT id_payment_status, COUNT(order_code) as s2total FROM `order_list` WHERE `date_time` BETWEEN '$date_y_-$date_m_-$date_d_ 00:00:00.000000' AND '$date_y_-$date_m_-$date_d_ 23:59:59.000000' AND id_payment_status=02 GROUP BY id_payment_status");
+                                        $rows0 = mysqli_fetch_array($query);
+                                        if($rows0>0){
+                                            echo $rows0['s2total'];
+                                        }else{
+                                            echo "0";
+                                        }
 
-                        ?>
-                    </p>
-                </span>
-            
-                </button>
-                <button  style="background-color:#3498db; "  class="tablinks" onclick="openmenu(event, 'P2')"><i style="text-align: center; padding-right: 5px;" class='bx bx-cookie'></i><div class="pp">ชำระเงินแล้ว</div>
-                <span class="TTTbadge">
-                    <p>
-                        <?php 
-                            $query =  mysqli_query($connect, "SELECT 	id_payment_status, COUNT(order_code) as s1total FROM order_list WHERE 	id_payment_status=01 GROUP BY 	id_payment_status");
-                            $rows0 = mysqli_fetch_array($query);
-                            if($rows0>0){
-                                echo $rows0['s1total'];
-                            }else{
-                                echo "0";
-                            }
-                            
-                        ?>
-                    </p>
-                </span>           
-                </button>
-                <button style="background-color:#de3902; "  class="tablinks" onclick="openmenu(event, 'P3')"><i style="text-align: center; padding-right: 5px;" class='bx bxs-wine'></i><div class="pp">ยกเลิกออเดอร์</div>
-                <span class="TTTbadge">
-                    <p>
-                        <?php 
-                            $query =  mysqli_query($connect, "SELECT 	id_payment_status, COUNT(order_code) as s3total FROM order_list WHERE 	id_payment_status=03 GROUP BY 	id_payment_status ");
-                            $rows0 = mysqli_fetch_array($query);
-                            if($rows0>0){
-                                echo $rows0['s3total'];
-                            }else{
-                                echo "0";
-                            }
-                            
-                        ?>
-                    </p>
-                </span>
-                </button>
-            </div>
+                                    ?>
+                                </p>
+                            </span>
+                        
+                            </button>
+                            <button  style="background-color:#3498db; "  class="tablinks" onclick="openmenu(event, 'P2')"><i style="text-align: center; padding-right: 5px;" class='bx bx-cookie'></i><div class="pp">ชำระเงินแล้ว</div>
+                            <span class="TTTbadge">
+                                <p>
+                                    <?php 
+                                        $query =  mysqli_query($connect, "SELECT id_payment_status, COUNT(order_code) as s1total FROM `order_list` WHERE `date_time` BETWEEN '$date_y_-$date_m_-$date_d_ 00:00:00.000000' AND '$date_y_-$date_m_-$date_d_ 23:59:59.000000' AND id_payment_status=01 GROUP BY id_payment_status");
+                                        $rows0 = mysqli_fetch_array($query);
+                                        if($rows0>0){
+                                            echo $rows0['s1total'];
+                                        }else{
+                                            echo "0";
+                                        }
+                                        
+                                    ?>
+                                </p>
+                            </span>           
+                            </button>
+                            <button style="background-color:#de3902; "  class="tablinks" onclick="openmenu(event, 'P3')"><i style="text-align: center; padding-right: 5px;" class='bx bxs-wine'></i><div class="pp">ยกเลิกออเดอร์</div>
+                            <span class="TTTbadge">
+                                <p>
+                                    <?php 
+                                        $query =  mysqli_query($connect, "SELECT id_payment_status, COUNT(order_code) as s3total FROM `order_list` WHERE `date_time` BETWEEN '$date_y_-$date_m_-$date_d_ 00:00:00.000000' AND '$date_y_-$date_m_-$date_d_ 23:59:59.000000' AND id_payment_status=03 GROUP BY id_payment_status");
+                                        $rows0 = mysqli_fetch_array($query);
+                                        if($rows0>0){
+                                            echo $rows0['s3total'];
+                                        }else{
+                                            echo "0";
+                                        }
+                                        
+                                    ?>
+                                </p>
+                            </span>
+                            </button>
+                        </div>
+
 
            
         </div>
-                
-            <div id="P1" class="tabcontent">
-            <div class="AAA"> 
-            <table >
-                <thead>
-                    <tr valign="baseline">
-                        <th style="width:10%">รหัสรายการสั่งอาหาร</th>
-                       <!-- <th style="text-align: start;" >รายการสั่งอาหาร</th> -->
-                        <th style="width:10%">จำนวนรายการอาหาร</th>
-                        <th style="width:10%">ยอดรวม</th>
-                        <th style="width:10%">เวลาสั่งอาหาร</th>
-                        <!-- <th style="width:10% ; text-align: center;">ชื่อผู้ใช้</th> -->
-                        <th style="width:5% ; text-align: center;">โต๊ะ</th>
-                        <th style="width:8% ; text-align: center;">สถานะ</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php                                    
-                      
-                        $query = mysqli_query($connect, "SELECT * FROM `order_list` WHERE id_payment_status ='02' GROUP BY `order_code` DESC");
-                        $cart = mysqli_num_rows($query);
+        <div id="P1" class="tabcontent">
+                        <div class="AAA"> 
+                        <table >
+                            <thead>
+                                <tr valign="baseline">
+                                    <th style="width:10%">รหัสรายการสั่งอาหาร</th>
+                                   <!-- <th style="text-align: start;" >รายการสั่งอาหาร</th> -->
+                                    <th style="width:10%">จำนวนรายการอาหาร</th>
+                                    <th style="width:10%">ยอดรวม</th>
+                                    <th style="width:10%">เวลาสั่งอาหาร</th>
+                                  <!--  <th style="width:10% ; text-align: center;">ชื่อผู้ใช้</th> -->
+                                    <th style="width:5% ; text-align: center;">โต๊ะ</th>
+                                    <th style="width:8% ; text-align: center;">สถานะ</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php                                    
+                                              
+                                              $date_m_ =date("m");
+                                              $date_y_ =date("y");
+                                              $date_d_ =date("d");
+                                    $query = mysqli_query($connect, "SELECT * FROM `order_list` WHERE `date_time` BETWEEN '$date_y_-$date_m_-$date_d_ 00:00:00.000000' AND '$date_y_-$date_m_-$date_d_ 23:59:59.000000' AND `id_payment_status`=02 GROUP BY `order_code` DESC ");
+                                    $cart = mysqli_num_rows($query);
 
-                        if ($cart > 0) {
-                            while ($row0 = mysqli_fetch_assoc($query)) {
+                                    if ($cart > 0) {
+                                        while ($row0 = mysqli_fetch_assoc($query)) {
 
 
-                                $queryp = mysqli_query($connect, "SELECT * FROM order_list order by order_code DESC");
-                                $cart_ = mysqli_num_rows($queryp);
-                                if($cart_ >0){
-                                    $row10 = mysqli_fetch_assoc($queryp);
-                                    $user_id_order_list = $row10['user_id'];
-                                }else{
-                                    echo "ไม่มีข้อมูล";
-                                }
+                                            $queryp = mysqli_query($connect, "SELECT * FROM `order_list` WHERE id_payment_status ='02' GROUP BY `order_code` DESC");
+                                            $cart_ = mysqli_num_rows($queryp);
+                                            if($cart_ >0){
+                                                $row10 = mysqli_fetch_assoc($queryp);
+                                                $user_id_order_list = $row10['user_id'];
+                                            }else{
+                                                echo "ไม่มีข้อมูล";
+                                            }
 
-                                $user = mysqli_query($connect, "SELECT * FROM `user` WHERE `user_id`= $user_id_order_list");
-                                $rowuser = mysqli_fetch_assoc($user);
+                                            $user = mysqli_query($connect, "SELECT * FROM `user` WHERE `user_id`= $user_id_order_list");
+                                            $rowuser = mysqli_fetch_assoc($user);
 
-                                $id_number = sprintf("%05d",$row0["order_code"]);
-                               
-                             
-                    ?>
-
-                <?php 
+                                            $id_order_code = $row0["order_code"] ;
+                                            $id_number = sprintf("%05d",$id_order_code);
+        
+        
+                                         
+                                ?>
+                            
+                            <?php 
                 if (isset($_GET['order_code'])) { 
                     $_SESSION["table_order_code"] = $_GET['order_code'] ;
                     $_SESSION["table"] = $row0["table_id"];
-                    echo "<script>window.location.href='01order_list_user.php'</script>";
+                    echo "<script>window.location.href='01order_list_user.php'</script>" ;
 
                 }
-                
-               
                 ?>
-                
-                    <tr valign="baseline" >
-                        <td style="text-align: center; font-weight: bold ; text-decoration: none;"> <?php echo '<a style="text-decoration: none; "name="order_code" type="submit" href="01order_user.php?order_code='.$row0["order_code"].' ">'.$id_number.'</a> '?> </td>
-                        <!-- <td><?php// echo $row0["all_food_items"] ?></td> -->
-                        <td style="text-align: center;"><?php echo $row0["number_food_items"] ?></td>
+                            
+                                <tr valign="baseline" >
+                                <td style="text-align: center; font-weight: bold ; text-decoration: none;"> <?php echo '<a style="text-decoration: none; "name="order_code" type="submit" href="01order_user.php?order_code='.$row0["order_code"].' ">'.$id_number.'</a> '?> </td>
+                                    <!-- <td><?php// echo $row0["all_food_items"] ?></td> -->
+                                    <td style="text-align: center;"><?php echo $row0["number_food_items"] ?></td>
 
 
-                        <td style="text-align: end;"><?php echo  "฿ ".number_format($row0["all_food_prices"] ,2)   ?></td>
-                        <td style="text-align: center;"><?php echo $row0["date_time"] ?></td>
-                        <!-- <td style="text-align: center;"><?php // echo $rowuser['user_name']; ?></td> -->
-                        <td style="text-align: center;"><?php echo $row0["table_id"] ?></td>
-                        <td style="text-align: center;">
-                            <?php 
-                                    if($row0["id_payment_status"]==01){
-                                        echo '  <button class="btntttt paid">
-                                                    <p>ชำระเงินแล้ว</p>
-                                                </button>';
-                                    }elseif($row0["id_payment_status"]==02){
-                                        echo ' <button class="btntttt awaiting ">
-                                                    <p>รอชำระเงิน</p>
-                                                </button>';
-                                    }else{
-                                        echo ' <button class="btntttt cancel">
-                                                    <p>ยกเลิก</p>
-                                                </button>';
-                                    }
-                                                                        
-                            ?>
+                                    <td style="padding-right: 20px; text-align: end;"><?php echo  "฿ ".number_format($row0["all_food_prices"] ,2)  ?></td>
+                                    <td style="text-align: center;"><?php echo $row0["date_time"] ?></td>
+                                   <!-- <td style="text-align: center;"><?php //echo $rowuser['user_name']; ?></td> -->
+                                    <td style="text-align: center;"><?php echo $row0["table_id"] ?></td>
+                                    <td style="text-align: center;">
+                                        <?php 
+                                                if($row0["id_payment_status"]==01){
+                                                    echo '  <button class="btntttt paid">
+                                                                <p>ชำระเงินแล้ว</p>
+                                                            </button>';
+                                                }elseif($row0["id_payment_status"]==02){
+                                                    echo ' <button class="btntttt awaiting ">
+                                                                <p>รอชำระเงิน</p>
+                                                            </button>';
+                                                }else{
+                                                    echo ' <button class="btntttt cancel">
+                                                                <p>ยกเลิก</p>
+                                                            </button>';
+                                                }
+                                                                                    
+                                        ?>
 
-                        </td>
+                                    </td>
+                                </tr>
+                                <?php } } else { ?>
+                                    <tr>
+                                        <td colspan="7" ><p class="nodata" style="text-align: center;">ไม่มีข้อมูล<p></td>
+                                    </tr>
+                                <?php } ?>
+                            </tbody>
+                            <!--
+                            <tfoot>
+                                <tr>
+                                    <th style="width:3%; text-align: center;">#</th>
+                                    <th style="width:10%">รหัสรายการสั่งอาหาร</th>
+                                     <th style="text-align: start;" >รายการสั่งอาหาร</th> 
+                                    <th style="width:10%">จำนวนรายการอาหาร</th>
+                                    <th style="width:10%">ยอดรวม</th>
+                                    <th style="width:10%">เวลาสั่งอาหาร</th>
+                                    <th style="width:10% ; text-align: center;">ชื่อผู้ใช้</th>
+                                    <th style="width:5% ; text-align: center;">โต๊ะ</th>
+                                    <th style="width:8% ; text-align: center;">สถานะ</th>
+                                </tr>
+                            </tfoot>
+                                            -->
+                            
+                              
+                        </table>
+                        </div>
+                                </div>
+              
+                     
 
-                    </tr>
-                
-                    <?php } } else { ?>
-                        <tr>
-                            <td style="text-align: center;" colspan="7" ><p class="nodata">ไม่มีข้อมูล<p></td>
-                        </tr>
-                    <?php } ?>
-                </tbody>
-                <!--
-                <tfoot>
-                    <tr>
-                        <th style="width:3%; text-align: center;">#</th>
-                        <th style="width:10%">รหัสรายการสั่งอาหาร</th>
-                         <th style="text-align: start;" >รายการสั่งอาหาร</th> 
-                        <th style="width:10%">จำนวนรายการอาหาร</th>
-                        <th style="width:10%">ยอดรวม</th>
-                        <th style="width:10%">เวลาสั่งอาหาร</th>
-                        <th style="width:10% ; text-align: center;">ชื่อผู้ใช้</th>
-                        <th style="width:5% ; text-align: center;">โต๊ะ</th>
-                        <th style="width:8% ; text-align: center;">สถานะ</th>
-                    </tr>
-                </tfoot>
-                                -->
-                
-                  
-            </table>
-            </div>
-                    </div>
-  
-         
+                        <!---->
+                       
 
-            <!---->
-           
+                        <div id="P2" class="tabcontent">
+                        <div class="AAA">  
+                        <table >
+                            <thead>
+                                <tr valign="baseline">
+                                    <th style="width:10%">รหัสรายการสั่งอาหาร</th>
+                                   <!-- <th style="text-align: start;" >รายการสั่งอาหาร</th> -->
+                                    <th style="width:10%">จำนวนรายการอาหาร</th>
+                                    <th style="width:10%">ยอดรวม</th>
+                                    <th style="width:10%">เวลาสั่งอาหาร</th>
+                                   <!-- <th style="width:10% ; text-align: center;">ชื่อผู้ใช้</th> -->
+                                    <th style="width:5% ; text-align: center;">โต๊ะ</th>
+                                    <th style="width:8% ; text-align: center;">สถานะ</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php                                    
+                                  
+                                    $query = mysqli_query($connect, "SELECT * FROM `order_list` WHERE `date_time` BETWEEN '$date_y_-$date_m_-$date_d_ 00:00:00.000000' AND '$date_y_-$date_m_-$date_d_ 23:59:59.000000' AND `id_payment_status`=01 GROUP BY `order_code` DESC");
+                                    $cart = mysqli_num_rows($query);
 
-            <div id="P2" class="tabcontent">
-            <div class="AAA">  
-            <table >
-                <thead>
-                    <tr valign="baseline">
-                        <th style="width:10%">รหัสรายการสั่งอาหาร</th>
-                       <!-- <th style="text-align: start;" >รายการสั่งอาหาร</th> -->
-                        <th style="width:10%">จำนวนรายการอาหาร</th>
-                        <th style="width:10%">ยอดรวม</th>
-                        <th style="width:10%">เวลาสั่งอาหาร</th>
-                        <!-- <th style="width:10% ; text-align: center;">ชื่อผู้ใช้</th> -->
-                        <th style="width:5% ; text-align: center;">โต๊ะ</th>
-                        <th style="width:8% ; text-align: center;">สถานะ</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php                                    
-                      
-                        $query = mysqli_query($connect, "SELECT * FROM `order_list` WHERE id_payment_status ='01' GROUP BY `order_code` DESC");
-                        $cart = mysqli_num_rows($query);
-
-                        if ($cart > 0) {
-                            while ($row0 = mysqli_fetch_assoc($query)) {
+                                    if ($cart > 0) {
+                                        while ($row0 = mysqli_fetch_assoc($query)) {
 
 
-                                $queryp = mysqli_query($connect, "SELECT * FROM order_list order by order_code DESC");
-                                $cart_ = mysqli_num_rows($queryp);
-                                if($cart_ >0){
-                                    $row10 = mysqli_fetch_assoc($queryp);
-                                    $user_id_order_list = $row10['user_id'];
-                                }else{
-                                    echo "ไม่มีข้อมูล";
-                                }
+                                            $queryp = mysqli_query($connect, "SELECT * FROM `order_list` WHERE id_payment_status ='01' GROUP BY `order_code` DESC");
+                                            $cart_ = mysqli_num_rows($queryp);
+                                            if($cart_ >0){
+                                                $row10 = mysqli_fetch_assoc($queryp);
+                                                $user_id_order_list = $row10['user_id'];
+                                            }else{
+                                                echo "ไม่มีข้อมูล";
+                                            }
 
-                                $user = mysqli_query($connect, "SELECT * FROM `user` WHERE `user_id`= $user_id_order_list");
-                                $rowuser = mysqli_fetch_assoc($user);
-
-
-                                $id_number = sprintf("%05d",$row0["order_code"]);
-                             
+                                            $user = mysqli_query($connect, "SELECT * FROM `user` WHERE `user_id`= $user_id_order_list");
+                                            $rowuser = mysqli_fetch_assoc($user);
+        
+        
+                                            $id_order_code = $row0["order_code"] ;
+                                            $id_number = sprintf("%05d",$id_order_code);
+        
+        
+                                         
                                 ?>
                             
-                    <tr valign="baseline" >
-                        <td style="text-align: center;"><?php echo $id_number ?></td>
-                        <!-- <td><?php// echo $row0["all_food_items"] ?></td> -->
-                        <td style="text-align: center;"><?php echo $row0["number_food_items"] ?></td>
+                                <tr valign="baseline" >
+                                    <td style="text-align: center;" ><?php echo $id_number ?></td>
+                                    <!-- <td><?php// echo $row0["all_food_items"] ?></td> -->
+                                    <td style="text-align: center;"><?php echo $row0["number_food_items"] ?></td>
 
 
-                        <td style="text-align: end;"><?php echo  "฿ ".number_format($row0["all_food_prices"] ,2)   ?></td>
-                        <td style="text-align: center;"><?php echo $row0["date_time"] ?></td>
-                        <!-- <td style="text-align: center;"><?php //echo $rowuser['user_name']; ?></td> -->
-                        <td style="text-align: center;"><?php echo $row0["table_id"] ?></td>
-                        <td style="text-align: center;">
-                            <?php 
-                                    if($row0["id_payment_status"]==01){
-                                        echo '  <button class="btntttt paid">
-                                                    <p>ชำระเงินแล้ว</p>
-                                                </button>';
-                                    }elseif($row0["id_payment_status"]==02){
-                                        echo ' <button class="btntttt awaiting ">
-                                                    <p>รอชำระเงิน</p>
-                                                </button>';
-                                    }else{
-                                        echo ' <button class="btntttt cancel">
-                                                    <p>ยกเลิก</p>
-                                                </button>';
-                                    }
-                                                                        
-                            ?>
+                                    <td style="padding-right: 20px; text-align: end;"><?php echo  "฿ ".number_format($row0["all_food_prices"] ,2) ?></td>
+                                    <td style="text-align: center;"><?php echo $row0["date_time"] ?></td>
+                                    <!-- <td style="text-align: center;"><?php //echo $rowuser['user_name']; ?></td> -->
+                                    <td style="text-align: center;"><?php echo $row0["table_id"] ?></td>
+                                    <td style="text-align: center;">
+                                        <?php 
+                                                if($row0["id_payment_status"]==01){
+                                                    echo '  <button class="btntttt paid">
+                                                                <p>ชำระเงินแล้ว</p>
+                                                            </button>';
+                                                }elseif($row0["id_payment_status"]==02){
+                                                    echo ' <button class="btntttt awaiting ">
+                                                                <p>รอชำระเงิน</p>
+                                                            </button>';
+                                                }else{
+                                                    echo ' <button class="btntttt cancel">
+                                                                <p>ยกเลิก</p>
+                                                            </button>';
+                                                }
+                                                                                    
+                                        ?>
 
-                        </td>
-                    </tr>
-                    <?php } } else { ?>
-                        <tr>
-                            <td style="text-align: center;" colspan="7" ><p class="nodata">ไม่มีข้อมูล<p></td>
-                        </tr>
-                    <?php } ?>
-                </tbody>
-                <!--
-                <tfoot>
-                    <tr>
-                        <th style="width:3%; text-align: center;">#</th>
-                        <th style="width:10%">รหัสรายการสั่งอาหาร</th>
-                         <th style="text-align: start;" >รายการสั่งอาหาร</th> 
-                        <th style="width:10%">จำนวนรายการอาหาร</th>
-                        <th style="width:10%">ยอดรวม</th>
-                        <th style="width:10%">เวลาสั่งอาหาร</th>
-                        <th style="width:10% ; text-align: center;">ชื่อผู้ใช้</th>
-                        <th style="width:5% ; text-align: center;">โต๊ะ</th>
-                        <th style="width:8% ; text-align: center;">สถานะ</th>
-                    </tr>
-                </tfoot>
-                                -->
-                
-                  
-            </table>
-            </div>
+                                    </td>
+                                </tr>
+                                <?php } } else { ?>
+                                    <tr>
+                                        <td colspan="7" ><p class="nodata" style="text-align: center;" >ไม่มีข้อมูล<p></td>
+                                    </tr>
+                                <?php } ?>
+                            </tbody>
+                            <!--
+                            <tfoot>
+                                <tr>
+                                    <th style="width:3%; text-align: center;">#</th>
+                                    <th style="width:10%">รหัสรายการสั่งอาหาร</th>
+                                     <th style="text-align: start;" >รายการสั่งอาหาร</th> 
+                                    <th style="width:10%">จำนวนรายการอาหาร</th>
+                                    <th style="width:10%">ยอดรวม</th>
+                                    <th style="width:10%">เวลาสั่งอาหาร</th>
+                                    <th style="width:10% ; text-align: center;">ชื่อผู้ใช้</th>
+                                    <th style="width:5% ; text-align: center;">โต๊ะ</th>
+                                    <th style="width:8% ; text-align: center;">สถานะ</th>
+                                </tr>
+                            </tfoot>
+                                            -->
+                            
+                              
+                        </table>
+                        </div>
 
-            </div>
-         
-            <!---->
-            
-            <div id="P3" class="tabcontent">
-            <div class="AAA">  
-            <table >
-                <thead>
-                    <tr valign="baseline">
-                        <th style="width:10%">รหัสรายการสั่งอาหาร</th>
-                       <!-- <th style="text-align: start;" >รายการสั่งอาหาร</th> -->
-                        <th style="width:10%">จำนวนรายการอาหาร</th>
-                        <th style="width:10%">ยอดรวม</th>
-                        <th style="width:10%">เวลาสั่งอาหาร</th>
-                       <!-- <th style="width:10% ; text-align: center;">ชื่อผู้ใช้</th> -->
-                        <th style="width:5% ; text-align: center;">โต๊ะ</th>
-                        <th style="width:8% ; text-align: center;">สถานะ</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php                                    
-                      
-                        $query = mysqli_query($connect, "SELECT * FROM `order_list` WHERE id_payment_status ='03' GROUP BY `order_code` DESC");
-                        $cart = mysqli_num_rows($query);
+                        </div>
+                     
+                        <!---->
+                        
+                        <div id="P3" class="tabcontent">
+                        <div class="AAA">  
+                        <table >
+                            <thead>
+                                <tr valign="baseline">
+                                    <th style="width:10%">รหัสรายการสั่งอาหาร</th>
+                                   <!-- <th style="text-align: start;" >รายการสั่งอาหาร</th> -->
+                                    <th style="width:10%">จำนวนรายการอาหาร</th>
+                                    <th style="width:10%">ยอดรวม</th>
+                                    <th style="width:10%">เวลาสั่งอาหาร</th>
+                                    <!-- <th style="width:10% ; text-align: center;">ชื่อผู้ใช้</th> -->
+                                    <th style="width:5% ; text-align: center;">โต๊ะ</th>
+                                    <th style="width:8% ; text-align: center;">สถานะ</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php                                    
+                                  
+                                    $query = mysqli_query($connect, "SELECT * FROM `order_list` WHERE `date_time` BETWEEN '$date_y_-$date_m_-$date_d_ 00:00:00.000000' AND '$date_y_-$date_m_-$date_d_ 23:59:59.000000' AND `id_payment_status`=03 GROUP BY `order_code` DESC");
+                                    $cart = mysqli_num_rows($query);
 
-                        if ($cart > 0) {
-                            while ($row0 = mysqli_fetch_assoc($query)) {
+                                    if ($cart > 0) {
+                                        while ($row0 = mysqli_fetch_assoc($query)) {
 
 
-                                $queryp = mysqli_query($connect, "SELECT * FROM order_list order by order_code DESC");
-                                $cart_ = mysqli_num_rows($queryp);
-                                if($cart_ >0){
-                                    $row10 = mysqli_fetch_assoc($queryp);
-                                    $user_id_order_list = $row10['user_id'];
-                                }else{
-                                    echo "ไม่มีข้อมูล";
-                                }
+                                            $queryp = mysqli_query($connect, "SELECT * FROM `order_list` WHERE id_payment_status ='03' GROUP BY `order_code` DESC");
+                                            $cart_ = mysqli_num_rows($queryp);
+                                            if($cart_ >0){
+                                                $row10 = mysqli_fetch_assoc($queryp);
+                                                $user_id_order_list = $row10['user_id'];
+                                            }else{
+                                                echo "ไม่มีข้อมูล";
+                                            }
 
-                                $user = mysqli_query($connect, "SELECT * FROM `user` WHERE `user_id`= $user_id_order_list");
-                                $rowuser = mysqli_fetch_assoc($user);
-
-                                $id_number = sprintf("%05d",$row0["order_code"]);
-                             
+                                            $user = mysqli_query($connect, "SELECT * FROM `user` WHERE `user_id`= $user_id_order_list");
+                                            $rowuser = mysqli_fetch_assoc($user);
+        
+                                            $id_order_code = $row0["order_code"] ;
+                                            $id_number = sprintf("%05d",$id_order_code);
+        
+        
+                                         
                                 ?>
-    
-                    <tr valign="baseline" >
-                        <td style="text-align: center;"><?php echo $id_number ?></td>
-                        <!-- <td><?php// echo $row0["all_food_items"] ?></td> -->
-                        <td style="text-align: center;"><?php echo $row0["number_food_items"] ?></td>
+                            
+                                <tr valign="baseline" >
+                                    <td style="text-align: center;" ><?php echo $id_number ?></td>
+                                    <!-- <td><?php// echo $row0["all_food_items"] ?></td> -->
+                                    <td style="text-align: center;"><?php echo $row0["number_food_items"] ?></td>
 
 
-                        <td style="text-align: end;"><?php echo  "฿ ".number_format($row0["all_food_prices"] ,2)   ?></td>
-                        <td style="text-align: center;"><?php echo $row0["date_time"] ?></td>
-                       <!-- <td style="text-align: center;"><?php //echo $rowuser['user_name']; ?></td> -->
-                        <td style="text-align: center;"><?php echo $row0["table_id"] ?></td>
-                        <td style="text-align: center;">
-                            <?php 
-                                    if($row0["id_payment_status"]==01){
-                                        echo '  <button class="btntttt paid">
-                                                    <p>ชำระเงินแล้ว</p>
-                                                </button>';
-                                    }elseif($row0["id_payment_status"]==02){
-                                        echo ' <button class="btntttt awaiting ">
-                                                    <p>รอชำระเงิน</p>
-                                                </button>';
-                                    }else{
-                                        echo ' <button class="btntttt cancel">
-                                                    <p>ยกเลิก</p>
-                                                </button>';
-                                    }
-                                                                        
-                            ?>
+                                    <td style="padding-right: 20px; text-align: end;"><?php echo  "฿ ".number_format($row0["all_food_prices"] ,2) ?></td>
+                                    <td style="text-align: center;" ><?php echo $row0["date_time"] ?></td>
+                                    <!-- <td style="text-align: center;"><?php //echo $rowuser['user_name']; ?></td> -->
+                                    <td style="text-align: center;"><?php echo $row0["table_id"] ?></td>
+                                    <td style="text-align: center;">
+                                        <?php 
+                                                if($row0["id_payment_status"]==01){
+                                                    echo '  <button class="btntttt paid">
+                                                                <p>ชำระเงินแล้ว</p>
+                                                            </button>';
+                                                }elseif($row0["id_payment_status"]==02){
+                                                    echo ' <button class="btntttt awaiting ">
+                                                                <p>รอชำระเงิน</p>
+                                                            </button>';
+                                                }else{
+                                                    echo ' <button class="btntttt cancel">
+                                                                <p>ยกเลิก</p>
+                                                            </button>';
+                                                }
+                                                                                    
+                                        ?>
 
-                        </td>
-                    </tr>
+                                    </td>
+                                </tr>
+                                <?php } } else { ?>
+                                    <tr>
+                                        <td colspan="7" ><p class="nodata" style="text-align: center;">ไม่มีข้อมูล<p></td>
+                                    </tr>
+                                <?php } ?>
+                            </tbody>
+                            <!--
+                            <tfoot>
+                                <tr>
+                                    <th style="width:3%; text-align: center;">#</th>
+                                    <th style="width:10%">รหัสรายการสั่งอาหาร</th>
+                                     <th style="text-align: start;" >รายการสั่งอาหาร</th> 
+                                    <th style="width:10%">จำนวนรายการอาหาร</th>
+                                    <th style="width:10%">ยอดรวม</th>
+                                    <th style="width:10%">เวลาสั่งอาหาร</th>
+                                    <th style="width:10% ; text-align: center;">ชื่อผู้ใช้</th>
+                                    <th style="width:5% ; text-align: center;">โต๊ะ</th>
+                                    <th style="width:8% ; text-align: center;">สถานะ</th>
+                                </tr>
+                            </tfoot>
+                                            -->
+                            
+                              
+                        </table>
+                        </div>
 
-                    <?php } } else { ?>
-                        <tr>
-                            <td style="text-align: center;" colspan="7" ><p class="nodata">ไม่มีข้อมูล<p></td>
-                        </tr>
-                    <?php } ?>
-                </tbody>
-                <!--
-                <tfoot>
-                    <tr>
-                        <th style="width:3%; text-align: center;">#</th>
-                        <th style="width:10%">รหัสรายการสั่งอาหาร</th>
-                         <th style="text-align: start;" >รายการสั่งอาหาร</th> 
-                        <th style="width:10%">จำนวนรายการอาหาร</th>
-                        <th style="width:10%">ยอดรวม</th>
-                        <th style="width:10%">เวลาสั่งอาหาร</th>
-                        <th style="width:10% ; text-align: center;">ชื่อผู้ใช้</th>
-                        <th style="width:5% ; text-align: center;">โต๊ะ</th>
-                        <th style="width:8% ; text-align: center;">สถานะ</th>
-                    </tr>
-                </tfoot>
-                                -->
-                
-                  
-            </table>
-            </div>
+                        </div>
+                        
+                        
+                        <!---->
 
-            </div>
-            
-            
-            <!---->
-
-        </div>
-
-
+                    </div>
            
          
             <script src="https://code.jquery.com/jquery-3.5.1.js"></script>

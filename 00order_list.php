@@ -172,32 +172,34 @@ if(isset($_POST['quantity_new'])){
                                     SET quantity ='$quantity_new' 
                                     WHERE id_cart_item = '$id_cart_item' ") ;
 
-
+    
 $table_order_code = $_SESSION["table_order_code"];
-                    $total_sum_u = mysqli_query ($connect, "SELECT quantity, price, SUM(quantity*price) as total_sum_u FROM cart_item WHERE `order_code` = '$table_order_code ' ");
-                    $row = mysqli_fetch_array($total_sum_u);
-                    $total_sum = $row['total_sum_u']; //     
+$total_sum_u = mysqli_query ($connect, "SELECT quantity, price, SUM(quantity*price) as total_sum_u FROM cart_item WHERE `order_code` = '$table_order_code ' ");
+$row = mysqli_fetch_array($total_sum_u);
+$total_sum = $row['total_sum_u']; //     
 
-                    $total_quantity= mysqli_query ($connect, "SELECT quantity, SUM(quantity) as quantity FROM cart_item WHERE `order_code` = '$table_order_code ' ");
-                    $rowquantity = mysqli_fetch_array($total_quantity);
-                    $quantity = $rowquantity['quantity']; //        //
-
-
-                    $sql_order_new = mysqli_query($connect,"SELECT MAX(order_code) as order_code FROM order_list WHERE table_id='$table_id' ");
-                    $rowsql_order_new = mysqli_fetch_array($sql_order_new);
-                    $order_code = $rowsql_order_new['order_code'];
-
-                    $sql_order_upnew =  mysqli_query($connect, "UPDATE order_list SET number_food_items ='$quantity',
-                                                                                    all_food_prices = '$total_sum' 
-                                                                                    WHERE order_code = '$order_code' ")
-                                                                                    or die('query failed');
+$total_quantity= mysqli_query ($connect, "SELECT quantity, SUM(quantity) as quantity FROM cart_item WHERE `order_code` = '$table_order_code ' ");
+$rowquantity = mysqli_fetch_array($total_quantity);
+$quantity = $rowquantity['quantity']; //        //
 
 
-                                                                                    if($sql){
-                                                                                        echo "<script>alert('แก้ไขจำนวนอาหารเรียบร้อยแล้ว!!');</script>";
-                                                                                    }else{
-                                                                                        echo "<script>alert('เกิดข้อผิดพลาด');</script>";      
-                                                                                    }
+$sql_order_new = mysqli_query($connect,"SELECT MAX(order_code) as order_code FROM order_list WHERE table_id='$table_id' ");
+$rowsql_order_new = mysqli_fetch_array($sql_order_new);
+$order_code = $rowsql_order_new['order_code'];
+
+$sql_order_upnew =  mysqli_query($connect, "UPDATE order_list SET number_food_items ='$quantity',
+                                                                all_food_prices = '$total_sum' 
+                                                                WHERE order_code = '$order_code' ")
+                                                                or die('query failed');
+
+
+    if($sql){
+        echo "<script>alert('แก้ไขจำนวนอาหารเรียบร้อยแล้ว!!');</script>";
+    }else{
+        echo "<script>alert('เกิดข้อผิดพลาด');</script>";      
+    }
+
+
 
 }
 
@@ -255,7 +257,13 @@ $total_sum = $row['total_sum_u']; //
     echo "bank_input = ".$bank_input."<br>";
     echo "bank_total = ".$bank_total_00 ;*/
 
-
+/*
+    echo "total_sum_u = ".$total_sum_u."<br>";
+    echo "bank_input = ".$bank_input."<br>";
+    echo "bank_total = ".$bank_total_00."<br>" ;
+    echo $bank_input."-".$total_sum_u."<br>" ;
+    echo number_format($bank_total,2) ;
+*/
 
         $sql_idorderlist = mysqli_query($connect,"SELECT MAX(order_code) as order_code FROM order_list WHERE table_id='$table_id' ");
         $rowsql_idorderlist = mysqli_fetch_array($sql_idorderlist);
@@ -695,7 +703,7 @@ $total_sum = $row['total_sum_u']; //
                                             <div class="quantity">
                                                 <!-- <span class="minus" ><i class='bx bx-minus' ></i></span>-->
                                                 <!-- <span class="number"></span> -->
-                                                <input class="number" type="number" id="quantity" name="txtquantity_new" min="1" max="50" value="<?php echo $row0["quantity"] ;?>" >
+                                                <input class="number" type="number" id="quantity" name="txtquantity_new" min="1" max="100" value="<?php echo $row0["quantity"] ;?>" >
                                                 <!-- <input  class="number" type="text" id="fname" name="txtquantity_new" value="<?php //echo $row0["quantity"] ;?>" > -->
                                                 <!-- <span class="plus" ><i class='bx bx-plus'></i></span> -->
                                             </div>
@@ -803,7 +811,7 @@ $total_sum = $row['total_sum_u']; //
                         <div id="QRcode" class="tabcontent">
                             <div class="bo">
                                 <div class="img">
-                                    <img src="imgweb/315517350_1111287729527664_2864855480835247150_n.jpg" alt="">
+                                    <img src="imgweb/345612960_2454331051388936_9040482964579297519_n.jpg" alt="">
                                 </div>
                                 <form  action="#" method="post"enctype="multipart/form-data">
                                     <input class="btn input" name="check_bill-qr" type="submit"  value="ชำระเงิน">

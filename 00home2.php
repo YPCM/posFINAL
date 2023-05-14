@@ -481,7 +481,7 @@ if(!empty($_GET["action"])) {
                                                 
                                                 <div class="views">
                                                     <p><?php echo $product_array[$key]["food_menu_name"];?></p>
-                                                    <p class="price0"><?php echo "฿".$product_array[$key]["selling_price_food"];?></p>
+                                                    <p class="price0"><?php echo $product_array[$key]["selling_price_food"];?></p>
                                                 </div> 
                                                 <input type="hidden" class="product-quantity" name="quantity" value="1" size="2" />
                                                 <input type="submit" value="Add to Cart" class="live" />
@@ -572,7 +572,7 @@ if(!empty($_GET["action"])) {
                                 <?php }?>
                             </div>
                            
-    
+                            </div>
                         </div>
     
                         <!---->

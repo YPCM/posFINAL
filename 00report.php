@@ -1191,12 +1191,13 @@ if(isset($_POST['date'])){
                                         $rowsumm = mysqli_fetch_assoc($summ);
                                         $sumtoday = number_format($rowsumm['summ'],2);
 
-                                        if($rowsumm['summ'] = ''){
+                                        if($rowsumm['summ'] == ''){
                                             $sumtodayM = '0' ;
                                         }else{
-                                            $sumtodayM = $sumtoday;
+                                            $sumtodayM = $rowsumm['summ'] ;
                                         }
 
+                                     
                                        $sql_report_today = mysqli_query($connect, "SELECT * FROM `sales_history` WHERE `date_time` BETWEEN '$date_y_-$date_m_-01 00:00:00.000000' AND '$date_y_-$date_m_-$date_d_ 23:59:59.000000' ORDER BY `receipt` DESC"); 
                                        $num_report_today = mysqli_num_rows($sql_report_today);
                                        if($num_report_today>0){
@@ -1215,8 +1216,9 @@ if(isset($_POST['date'])){
                                     ?>
                                     <tbody>
                                         <tr>        
+                                        <td><a href="00report.php?receipt=<?=$row_report_today['receipt'] ?>"><span class="material-icons">receipt</span><?php echo $row_report_today['receipt'] ?></a></td>
                                             <?////////////////?>           
-                                            <td><a href="00report_2.php?receipt=<?=$tyt ?>"><span class="material-icons">receipt</span><?php echo $row_report_today['receipt'] ?></a></td>
+                                            <!--<td><a href="00report_2.php?receipt=<?=$tyt ?>"><span class="material-icons">receipt</span><?php //echo $row_report_today['receipt'] ?></a></td> -->
                                             <td style="text-align: center;"><?php echo $roworder_list_today['number_food_items']?></td>
                                             <td style="text-align: center;"><?php echo $rowuser['user_name']?></td>
                                             <td><?php echo $row_report_today['date_time']?></td>
@@ -1310,10 +1312,10 @@ if(isset($_POST['date'])){
 
                                             $sumtoday = number_format($rowsumy['sumy'],2);
 
-                                            if($rowsumy['sumy'] = ''){
+                                            if($rowsumy['sumy'] == ''){
                                                 $sumtodayY = '0' ;
                                             }else{
-                                                $sumtodayY = $sumtoday;
+                                                $sumtodayY = $rowsumy['sumy'];
                                             }
 
                                        $sql_report_today = mysqli_query($connect, "SELECT * FROM `sales_history` WHERE `date_time` BETWEEN '$date_y_-01-01 00:00:00.000000' AND '$date_y_-12-31 23:59:59.000000' ORDER BY `receipt` DESC "); 

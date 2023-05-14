@@ -267,18 +267,11 @@ if (isset($_GET['del_user'])) {
                                     <?php } ?>
                                     
                                 <td><?php echo $row["phone"];?></td>
-                                    <?php 
-                                        if($row["useredit"]==0){        
-                                    ?>
-                                        <td><?php echo $row["date_added"];?></td>
-                                    <?php }else{ ?>
-                                        <td><?php echo $row["date_added"]." &nbsp &nbsp &nbsp"."[ แก้ไขล่าสุด ]";?></td>
-                                    <?php } ?>
+                                <td><?php echo $row["date_added"];?></td>
 
                                 <td class=btnA style=" text-align:center;"> 
                                     <a  class="btntd edit" name="edit" href="useredit.php?user_id=<?=$row["user_id"]?>" ><i class='bx bxs-edit-alt' ></i></a> 
                                     <a data-id="<?=$row["user_id"]?>" href="?del_user=<?=$row["user_id"]?>" class="btntd delete delete-btn"><i class='bx bxs-trash-alt'></i></a>
-
                                    <!-- <a class="btntd delete" name="del_user" type="submit" onclick="Del(this.href); return false;" href="00user.php?del_user=<?php //echo $row['user_id']; ?>"><i class='bx bxs-trash-alt'></i></a> -->
                                 </td>
                             </tr>
@@ -453,10 +446,10 @@ if (isset($_GET['del_user'])) {
  
     <script>
 
-    $(".delete-btn").click(function(e) {
-            var userId = $(this).data('id');
+        $(".delete-btn").click(function(e) {
+            var foodId = $(this).data('id');
             e.preventDefault();
-            deleteConfirm(userId);
+            deleteConfirm(foodId);
         })
 
         function deleteConfirm(foodId) {
@@ -474,7 +467,7 @@ if (isset($_GET['del_user'])) {
                         $.ajax({
                                 url: '00user.php',
                                 type: 'GET',
-                                data: 'del_food=' + userId,
+                                data: 'del_user=' + foodId,
                             })
                             .done(function() {
                                 Swal.fire({

@@ -176,7 +176,7 @@ if (isset($_GET['exit'])) {
 
             <div class="boxtable">
                 <div class="table">
-                    <p>ออเดอร์อาหาร</p>
+                    <p>ออเดอร์อาหาร (วันนี้)</p>
                 </div>
             </div> 
 
@@ -190,7 +190,7 @@ if (isset($_GET['exit'])) {
                             <span class="TTTbadge">
                                 <p>
                                     <?php 
-                                        $query =  mysqli_query($connect, "SELECT id_payment_status, COUNT(order_code) as s2total FROM order_list WHERE 	id_payment_status=02 GROUP BY 	id_payment_status");
+                                        $query =  mysqli_query($connect, "SELECT id_payment_status, COUNT(order_code) as s2total FROM `order_list` WHERE `date_time` BETWEEN '$date_y_-$date_m_-$date_d_ 00:00:00.000000' AND '$date_y_-$date_m_-$date_d_ 23:59:59.000000' AND id_payment_status=02 GROUP BY id_payment_status");
                                         $rows0 = mysqli_fetch_array($query);
                                         if($rows0>0){
                                             echo $rows0['s2total'];
@@ -207,7 +207,7 @@ if (isset($_GET['exit'])) {
                             <span class="TTTbadge">
                                 <p>
                                     <?php 
-                                        $query =  mysqli_query($connect, "SELECT 	id_payment_status, COUNT(order_code) as s1total FROM order_list WHERE 	id_payment_status=01 GROUP BY 	id_payment_status");
+                                        $query =  mysqli_query($connect, "SELECT id_payment_status, COUNT(order_code) as s1total FROM `order_list` WHERE `date_time` BETWEEN '$date_y_-$date_m_-$date_d_ 00:00:00.000000' AND '$date_y_-$date_m_-$date_d_ 23:59:59.000000' AND id_payment_status=01 GROUP BY id_payment_status");
                                         $rows0 = mysqli_fetch_array($query);
                                         if($rows0>0){
                                             echo $rows0['s1total'];
@@ -223,7 +223,7 @@ if (isset($_GET['exit'])) {
                             <span class="TTTbadge">
                                 <p>
                                     <?php 
-                                        $query =  mysqli_query($connect, "SELECT 	id_payment_status, COUNT(order_code) as s3total FROM order_list WHERE 	id_payment_status=03 GROUP BY 	id_payment_status ");
+                                        $query =  mysqli_query($connect, "SELECT id_payment_status, COUNT(order_code) as s3total FROM `order_list` WHERE `date_time` BETWEEN '$date_y_-$date_m_-$date_d_ 00:00:00.000000' AND '$date_y_-$date_m_-$date_d_ 23:59:59.000000' AND id_payment_status=03 GROUP BY id_payment_status");
                                         $rows0 = mysqli_fetch_array($query);
                                         if($rows0>0){
                                             echo $rows0['s3total'];
@@ -257,15 +257,18 @@ if (isset($_GET['exit'])) {
                             </thead>
                             <tbody>
                                 <?php                                    
-                                  
-                                    $query = mysqli_query($connect, "SELECT * FROM `order_list` WHERE id_payment_status ='02' GROUP BY `order_code` DESC");
+                                              
+                                              $date_m_ =date("m");
+                                              $date_y_ =date("y");
+                                              $date_d_ =date("d");
+                                    $query = mysqli_query($connect, "SELECT * FROM `order_list` WHERE `date_time` BETWEEN '$date_y_-$date_m_-$date_d_ 00:00:00.000000' AND '$date_y_-$date_m_-$date_d_ 23:59:59.000000' AND `id_payment_status`=02 GROUP BY `order_code` DESC ");
                                     $cart = mysqli_num_rows($query);
 
                                     if ($cart > 0) {
                                         while ($row0 = mysqli_fetch_assoc($query)) {
 
 
-                                            $queryp = mysqli_query($connect, "SELECT * FROM order_list order by order_code DESC");
+                                            $queryp = mysqli_query($connect, "SELECT * FROM `order_list` WHERE id_payment_status ='02' GROUP BY `order_code` DESC");
                                             $cart_ = mysqli_num_rows($queryp);
                                             if($cart_ >0){
                                                 $row10 = mysqli_fetch_assoc($queryp);
@@ -373,14 +376,14 @@ if (isset($_GET['exit'])) {
                             <tbody>
                                 <?php                                    
                                   
-                                    $query = mysqli_query($connect, "SELECT * FROM `order_list` WHERE id_payment_status ='01' GROUP BY `order_code` DESC");
+                                    $query = mysqli_query($connect, "SELECT * FROM `order_list` WHERE `date_time` BETWEEN '$date_y_-$date_m_-$date_d_ 00:00:00.000000' AND '$date_y_-$date_m_-$date_d_ 23:59:59.000000' AND `id_payment_status`=01 GROUP BY `order_code` DESC");
                                     $cart = mysqli_num_rows($query);
 
                                     if ($cart > 0) {
                                         while ($row0 = mysqli_fetch_assoc($query)) {
 
 
-                                            $queryp = mysqli_query($connect, "SELECT * FROM order_list order by order_code DESC");
+                                            $queryp = mysqli_query($connect, "SELECT * FROM `order_list` WHERE id_payment_status ='01' GROUP BY `order_code` DESC");
                                             $cart_ = mysqli_num_rows($queryp);
                                             if($cart_ >0){
                                                 $row10 = mysqli_fetch_assoc($queryp);
@@ -478,14 +481,14 @@ if (isset($_GET['exit'])) {
                             <tbody>
                                 <?php                                    
                                   
-                                    $query = mysqli_query($connect, "SELECT * FROM `order_list` WHERE id_payment_status ='03' GROUP BY `order_code` DESC");
+                                    $query = mysqli_query($connect, "SELECT * FROM `order_list` WHERE `date_time` BETWEEN '$date_y_-$date_m_-$date_d_ 00:00:00.000000' AND '$date_y_-$date_m_-$date_d_ 23:59:59.000000' AND `id_payment_status`=03 GROUP BY `order_code` DESC");
                                     $cart = mysqli_num_rows($query);
 
                                     if ($cart > 0) {
                                         while ($row0 = mysqli_fetch_assoc($query)) {
 
 
-                                            $queryp = mysqli_query($connect, "SELECT * FROM order_list order by order_code DESC");
+                                            $queryp = mysqli_query($connect, "SELECT * FROM `order_list` WHERE id_payment_status ='03' GROUP BY `order_code` DESC");
                                             $cart_ = mysqli_num_rows($queryp);
                                             if($cart_ >0){
                                                 $row10 = mysqli_fetch_assoc($queryp);

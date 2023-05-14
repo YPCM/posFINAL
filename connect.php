@@ -1,6 +1,6 @@
 <?php
 $server="localhost";
-$username="root";
+$username="root"; 
 $conpassword="";
 $database="database_by_pos";
 

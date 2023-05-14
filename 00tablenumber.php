@@ -68,7 +68,7 @@ if (isset($_GET['table'])) {
     $table_id = $cart['table_id'];
     $cart1 = $cart['status'];
 
-    print_r($_SESSION["table"]); 
+   // print_r($_SESSION["table"]); 
     /*$cart = mysqli_num_rows($order_code);*/
     if ($cart1 == 1) {
       /*  $table_id  = mysqli_real_escape_string($connect,$_GET['table']);

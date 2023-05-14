@@ -144,8 +144,7 @@ if(!empty($_GET["action"])) {
 
                     $order_code=$_SESSION["order_code"];
                   
-                    echo  $order_code. "<br>";
-
+                
 
                     $search=mysqli_query($connect,"SELECT * FROM cart_item WHERE `order_code` = '$order_code' AND `code` = '$code' ");
                     $cart = mysqli_num_rows($search);
@@ -197,7 +196,7 @@ if(!empty($_GET["action"])) {
                     $quantity = $rowquantity['quantity']; //        //
 
 
-                    $sql_order_new = mysqli_query($connect,"SELECT MAX(order_code) as order_code FROM order_list WHERE table_id='$table_id' ");
+                    $sql_order_new = mysqli_query($connect,"SELECT MAX(order_code) as order_code FROM order_list WHERE table_id='$table_order_code' ");
                     $rowsql_order_new = mysqli_fetch_array($sql_order_new);
                     $order_code = $rowsql_order_new['order_code'];
 
@@ -511,7 +510,7 @@ if(!empty($_GET["action"])) {
                                 <?php }?>
                             </div>
                            
-    
+                            </div>
                         </div>
     
                         <!---->

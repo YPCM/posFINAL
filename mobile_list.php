@@ -1,13 +1,10 @@
-<?php 
+<?php
 include 'connect.php'; 
+session_start();
 
 include_once('function.php');
 $db_handle = new DBController();
 $insertdata = new DB_con();
-
-session_start();
-
-
 
 
 
@@ -30,7 +27,7 @@ if (isset($_GET['exit'])) {
 }
 
 
-//print_r($_SESSION["table"]) ;
+//    print_r($_SESSION["table"]) ;
 
 $table_id = $_SESSION["table"];
 
@@ -74,7 +71,7 @@ if (isset($_POST['addmanu'])) {
     $_SESSION["order_code"] = $rowaddmenu_orderlist['order_code'];
 
     $_SESSION["table_orderlist"] = $table_id ;
-    echo "<script>window.location.href='01home2_user_list.php'</script>";
+    echo "<script>window.location.href='mobile_food_add.php'</script>";
 
 }
 
@@ -145,12 +142,12 @@ if(isset($_POST['cancelcart'])){
         if($sqlstatus_00){
             echo "<script>alert('ยกเลิกออเดอร์เรียบร้อยแล้ว!!');</script>";
             unset($_SESSION["cart_item"]);
-            echo "<script>window.location.href='01tablenumber_user.php'</script>";
+            echo "<script>window.location.href='mobile_table.php'</script>";
     
            //echo "<script>window.location.href='00order.php'</script>";
         }else {
             echo "<script>alert('เกิดข้อผิดพลาด');</script>";      
-            echo "<script>window.location.href='01order_list.php'</script>";
+            echo "<script>window.location.href='mobile_list.php'</script>";
         }
     }
 }
@@ -300,13 +297,11 @@ if(isset($_POST['check_bill-bank'])){
     echo "<p type='hidden' value='$total_sum_u'></p>";
     echo "<p type='hidden' value='$bank_input'></p>";
     echo "<p type='hidden' value='$bank_total_00'></p>";
-/*
-    echo "total_sum_u = ".$total_sum_u."<br>";
+
+    /*echo "total_sum_u = ".$total_sum_u."<br>";
     echo "bank_input = ".$bank_input."<br>";
-    echo "bank_total = ".$bank_total_00."<br>" ;
-    echo $bank_input."-".$total_sum_u."<br>" ;
-    echo number_format($bank_total,2) ;
-*/
+    echo "bank_total = ".$bank_total_00 ;*/
+
 
 
         $sql_idorderlist = mysqli_query($connect,"SELECT MAX(order_code) as order_code FROM order_list WHERE table_id='$table_id' ");
@@ -394,7 +389,7 @@ if(isset($_POST['check_bill-bank'])){
                     showConfirmButton: true,
                     }).then((result)=> {
                         if(result){
-                            window.location.href='01order_list_user.php';
+                            window.location.href='mobile_list.php';
                         }
                     })"; 
         echo    "</script>";
@@ -409,7 +404,7 @@ if(isset($_POST['check_bill-bank'])){
                     showConfirmButton: true,
                     }).then((result)=> {
                         if(result){
-                            window.location.href='01tablenumber_user.php';
+                            window.location.href='mobile_table.php';
                         }
                     })"; 
         echo    "</script>";
@@ -500,14 +495,14 @@ if(isset($_POST['check_bill-qr'])){
                        showConfirmButton: true,
                        }).then((result)=> {
                            if(result){
-                               window.location.href='01tablenumber_user.php';
+                               window.location.href='mobile_table.php';
                            }
                        })"; 
            echo    "</script>";
            
         }else {
             echo "<script>alert('เกิดข้อผิดพลาด');</script>";      
-            echo "<script>window.location.href='01order_list_user.php'</script>";
+            echo "<script>window.location.href='mobile_list.php'</script>";
         }
 
    
@@ -516,47 +511,23 @@ if(isset($_POST['check_bill-qr'])){
 
 
 
-
-
-
-
-
-
 ?>
-<html lang="en">
+<!DOCTYPE html>
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>รายการสั่งอาหาร</title>
-    <link rel="stylesheet"href="wcss/order_list.css">
-    <link rel="stylesheet"href="wcss/navber.css">
-    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"rel="stylesheet">
+<title>W3.CSS Template</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Karma">
+<link rel="stylesheet" href="wcss/00mobile.css">
+<link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"rel="stylesheet">
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 </head>
-<body>
-    
-<div class="navber">
-        <div class="he">
-            <a style="color: #fff; text-decoration: none;" href="01tablenumber_user.php">ร้านก๊วยจั๊บกำลังภายใน</a>
-        </div>
-
-        <a href="01order_user.php" class="button">
-            <span  class="content"><i class='bx bxs-dish'></i></span>
-                <?php
-                include_once('function.php');
-                $fetchdata = new DB_con();
-                $sql = $fetchdata->tostatus();
-                $row = mysqli_fetch_array($sql); 
-
-                    if($row>0){
-                        echo '<span class="badge">'.$row['TOstatus'].'</span>';
-                        }else{
-                        echo '<span class="badge">0</span>';
-                    }
-                ?>                           
-        </a> 
-        <?php
+<body >
+<?php
             $user_id = $_SESSION['user_id'];
             $user = mysqli_query($connect," SELECT `user_id`,`user_name`,`id_user_type` FROM `user` WHERE user_id='$user_id' " );
             $row = mysqli_fetch_assoc($user);
@@ -564,206 +535,199 @@ if(isset($_POST['check_bill-qr'])){
             $status = $_SESSION['status_login'] ;
             $user_type = mysqli_query($connect," SELECT * FROM `user_type` WHERE id_user_type='$status' " );
             $rowuser_type = mysqli_fetch_assoc($user_type)
-        ?>
+    ?>
+<!-- Sidebar (hidden by default) -->
+<nav class="w3-sidebar w3-bar-block w3-card w3-top w3-xlarge w3-animate-left" style="display:none;z-index:2;width:40%;min-width:300px" id="mySidebar">
+    <div class="bbb" onclick="w3_close()">
+        <a href="javascript:void(0)" class="w3-bar-item w3-button user_00" >
+            <div class="user">
+                <i class='bx bxs-face'></i>
+                <span><?php echo $row['user_name']. "  ( " .$rowuser_type['user_type']. " )" ; ?></span>
+            </div>
+        </a>
+        <a href="mobile_table.php" onclick="w3_close()" class="w3-bar-item w3-button ">
+            <div class="menu">
+                <i class='bx bx-store' ></i>หน้าหลัก
+            </div>
+        </a>
+        <a  type="submit" href="mobile_table.php?exit" onclick="w3_close()" class="w3-bar-item w3-button menu">
+            <div class="menu">
+                <span class="material-icons">logout</span>ออกจากระบบ
+            </div>
+        </a>
+    </div>
+</nav>
 
-        <button class="myBtn2"id="myBtn2" onclick="myFunctionmyBtn()">
-                    <p class="co"><?php echo $rowuser_type['user_type']?></p>
-                    <div class="profile-photo"  >
-                    <i class='bx bxs-cool'></i>
-                    <!-- <img src="https://i.pinimg.com/736x/36/7c/39/367c393354fecb4918b2bee5795ae290.jpg" > -->
-                    </div>  
-        </button>
+<!-- Top menu -->
+<div class="w3-top">
+  <div class="ggg" style="max-width:1200px;margin:auto">
+    <div class="btn" id="btn" onclick="myFunctionmyBtn()"><i class='bx bx-menu'></i></div>
+    <div class="w3-right w3-padding-16">ร้านก๊วยจั๊บกำลังภายใน</div>
+   <!--
+    <div class="w3-right w3-padding-16">
+        <a href="#" class="button">
+            <span  class="content"><i class='bx bxs-dish'></i></span>
+            <span class="badge">0</span>
+        </a>    
+    </div>
+    -->
+    <a href="mobile_order.php" class="notification">
+        <span><i class='bx bxs-dish'></i></span>
+        <?php
+                include_once('function.php');
+                $fetchdata = new DB_con();
+                $sql = $fetchdata->tostatus();
+                $row = mysqli_fetch_array($sql);
+                if($row>0){
+                    echo '<span class="badge">'.$row['TOstatus'].'</span>';
+                    }else{
+                    echo '<span class="badge">0</span>';
+                }
+            ?>         
+    </a>
+  </div>
+</div>
 
 
-        <div  id="id01" class="modalid01">
-            <div class="modal__content">
-                <div class="modal-header">
-                    <p><?php echo $row['user_name']. "( " .$rowuser_type['user_type']. " )" ; ?></p>
-                    <button class="dark" onclick="myFunction()"><span class="material-icons"><span class="material-icons">settings_brightness</span></button>
+<div class="w3-main w3-content w3-padding " style="max-width:1200px;margin-top:90px;">
+      
+    <?php 
+        $sql_idorderlist = mysqli_query($connect,"SELECT * FROM order_list WHERE order_code='$table_order_code' ");
+        $rowsql_idorderlist = mysqli_fetch_array($sql_idorderlist);
+        $id_order_code = $rowsql_idorderlist['order_code'];
+
+        $id_number = sprintf("%05d",$id_order_code); // เลข 5 คือจำนวนตัวเลข จะให้มีกี่ตัวเช่น 00001, 00024, 00259
+
+        $query = mysqli_query($connect," SELECT table_id, number FROM table_number WHERE table_id = '$table_id' ");
+        $row = mysqli_fetch_assoc($query); 
+    ?>
+    <div class="boxlistA">
+        <p>ร้านก๊วยจั๊บกำลังภายใน</p>
+        <p># รายการสั่งอาหาร <?php echo  $id_number ?></p>
+        
+        <p>รายการอาหาร | โต๊ะ :  <?php  echo $row["number"] ?>  | วัน/เดือน/ปี : <?php echo $date_d_m_Y ; ?></p>
+    </div>
+   <div class="boxee">
+
+   <?php
+    $query = mysqli_query($connect, "SELECT * FROM cart_item WHERE order_code='$table_order_code' ");
+                                    $cart = mysqli_num_rows($query);
+
+    $num = 0 ;
+    $total_sum_u = 0 ;
+    if ($cart > 0) {
+        while ($row0 = mysqli_fetch_assoc($query)) {
+            $code= $row0["code"];
+
+            $fooditem = mysqli_query($connect, "SELECT * FROM food_item WHERE food_menu_code='$code' ");
+            $rowfooditem = mysqli_fetch_assoc($fooditem);
+            $name = $rowfooditem["food_menu_name"];
+
+           $total = $row0["quantity"]*$row0["price"]; 
+     ?>
+
+                   
+        <div class="boxA">
+            <div class="boxlistA ">
+                <div class="listitem">
+                    <div class="listitemE"><?php echo $num = $num + 1 ?></div>
+                    <div class="listitemA"><?php echo $name; ?></div>
+                    <div class="listitemC"><?php echo number_format($total,2); ?>   บาท</div>
                 </div>
-                <div class="modal-body">
-                        <a class="a"  type="submit" href="00order_list.php?exit"  >
-                            <span class="material-icons">logout</span>
-                            <p>ออกจากระบบ</p>
-                            <i class='bx bx-chevron-right'></i>
-                        </a>
+        
+            </div>
+            <div class="boxlistB ">
+                <div class="listitem">
+                <form action="mobile_list.php?id_cart_item=<?php echo $row0['id_cart_item']; ?>" method="post"enctype="multipart/form-data">
+                    <div class="listitemB"> 
+    
+                          <!--  <div class="container">
+                                <button onclick="decrement()" class="minus" id="minus" >-</button>
+                                <input id=demoInput type=number value="<?php //echo $row0["quantity"] ;?>"min=1 max=50>
+                                <button onclick="increment()" class="plus" id="plus">+</button>
+                            </div>
+                        -->
+                      
+                    </div>
+                    <div class="listitemD">
+                    <div class="container_pp">
+                            <p>X</p>
+                              
+                                    <input class="number" type="number" id="quantity" name="txtquantity_new" min="1" max="50" value="<?php echo $row0["quantity"] ;?>" >
+                                    <input style="color: #fff; text-decoration: none; border: none; height: 30px;padding: 0px 10px;background-color: #0984e3;  margin-left: 5px;"class="btnL add" name="quantity_new" type="submit" value="บันทึกจำนวน">
+                                    <input style="color: #fff; text-decoration: none; border: none; height: 30px;padding: 0px 10px;background-color: #de3902; margin-left: 70px;" class="btnL del" name="del_list" type="submit" value="ลบ">
+                        </div>
+                    </div>
+                </div>
+                </form>
+            </div>
+        </div>
+
+        <?php }   } else  { ?>
+                                    <td colspan="8" ><p>ไม่มีข้อมูลอาหารที่เพิ่มมา</p></td>
+        <?php   }   ?>
+
+
+
+
+   
+
+   </div>
+    
+</div>
+
+
+ 
+        <?php
+                                
+            $total_sum_u = mysqli_query ($connect, "SELECT quantity, price, SUM(quantity*price) as total_sum_u FROM cart_item WHERE order_code='$table_order_code' ");
+            $row = mysqli_fetch_array($total_sum_u);
+
+        ?>
+    <div class="footer7 " >
+        <div class="totalsumEE">
+            <div class="totalsumAA">ราคารวมทั้งหมด</div>
+            <div class="totalsumBB"><?php echo  number_format($row ["total_sum_u"] ,2);  ?> บาท</div>
+        </div> 	
+    </div>
+
+    <button class="accordion1" >
+        <div class="btnfooter">
+            <a href="#" class="btn_00"><i class='bx bx-chevron-up'></i></a>
+        </div>
+    </button>
+
+        <div class="panel_E" style="display: none;overflow: hidden;height: 60px;">
+            <div class="y"  style="display: flex;width: 100%; justify-content: space-between;">
+                <div class="footer4" style="width: 49.9%;">
+                    <div class="btnfooter" style="border: none;font-size: 16px;display: flex;align-items: center;justify-content: center;background-color: #f1f2f1;color: #0984e3;margin-bottom: 5px;text-decoration: none;">
+                        <form action=# method="post"enctype="multipart/form-data">
+                            <input style="border: none;height: 50px;font-size: 16px;display: flex;align-items: center;justify-content: center;background-color: #f1f2f1;color: #0984e3;margin-bottom: 5px;text-decoration: none;"class="btn_00" name="addmanu" type="submit" value="เพิ่มเมนูอาหาร"> 
+                        </form>        
+                    </div>
+                </div>
+                <div class="footer5" style="width: 49.9%;">
+                    <div class="btnfooter" style="border: none;font-size: 16px;display: flex;align-items: center;justify-content: center;background-color: #f1f2f1;color: #0984e3;margin-bottom: 5px;text-decoration: none;">
+                        <form action=# method="post"enctype="multipart/form-data">
+                            <input style="border: none;height: 50px;font-size: 16px;display: flex;align-items: center;justify-content: center;background-color: #f1f2f1;color: #de3902;margin-bottom: 5px;text-decoration: none;" class="btn_00" name="cancelcart" type="submit" value="ยกเลิกออเดอร์">
+                        </form>   
+                    </div>
                 </div>
             </div>
         </div>
 
 
-
-
-    </div><!-- end navber -->
-    
-<div class="home-section">
-        <!--  <div class="menubox">
-                   <div class="menu0">
-                       <div class="a1">w</div>
-                       <div class="a1">w</div>
-                       <div class="a1">w</div>
-                       <div class="a1">w</div>
-                   </div>--> 
-                        <div class="menu">
-                        
-
-                            <div class="nav-list">
-                            <div class="menubox">
-                                        <div class="b1"></div>
-                                        <div class="a1">
-                                            <a href="01tablenumber_user.php">
-                                                <i class='bx bx-store' ></i>
-                                                <span class="links_name">หน้าหลัก</span>
-                                            </a>
-                                        </div>
-                                    </div>
-
-                               
-                        </div>     
-                   </div>
+    <div class="footer6">
+        <div class="btnfooter">
+            <a href="#demo-modal" class="btn_00">เช็คบิล</a>
+        </div>
+    </div>
 
 
 
-
-                   <div class="box">
-                <div class="boxuser">    
-                    <div class="head">
-                        <div class="name">ร้านก๊วยจั๊บกำลังภายใน</div>
-
-                        <?php 
-                            $sql_idorderlist = mysqli_query($connect,"SELECT * FROM order_list WHERE order_code='$table_order_code' ");
-                            $rowsql_idorderlist = mysqli_fetch_array($sql_idorderlist);
-                            $id_order_code = $rowsql_idorderlist['order_code'];
-
-                            $id_number = sprintf("%05d",$id_order_code); // เลข 5 คือจำนวนตัวเลข จะให้มีกี่ตัวเช่น 00001, 00024, 00259
-
-                        ?>
-
-                        <div class="bil_number"># รายการสั่งอาหาร <?php echo  $id_number ?></div>
-                        <?php 
-                             $query = mysqli_query($connect," SELECT table_id, number FROM table_number WHERE table_id = '$table_id' ");
-                             $row = mysqli_fetch_assoc($query); 
-                        ?>
-                        <div class="bil_number">รายการอาหาร   |   โต๊ะ : <?php  echo $row["number"] ?>  |  วัน/เดือน/ปี : <?php echo $date_d_m_Y  ?></div>
-                    </div>
-                    <div class="head1">
-                        <!--
-                            <form class="TT" action="#" method="post"enctype="multipart/form-data">
-                                    <input class="btn input" name="addmanu" type="submit" value="เพิ่มเมนูอาหาร">
-                                    <input class="btn cancel" name="cancelcart" type="submit" value="ยกเลิกออเดอร์">
-                            </form>
-                        -->
-                    </div>
-                    <div class="head0">
-                        <table id="myTable">
-                            <tr>
-                                <th style="width:3%">#</th>
-                                <th style="text-align: start;" >ชื่อเมนูอาหาร</th>
-                                <th style="width:10%">จำนวน</th>
-                                <th style="width:10%">ราคา / รายการ</th>
-                                <th style="width:10%">ราคา</th>
-                                <th style="width:10% ; text-align: center;">#</th>
-                            </tr>
-                                <?php
-/*
-                                    $sql_price = "SELECT SUM(price) AS sumprice 
-                                    FROM cart_item where table_id='$table_id'";
-
-                                    $sumtoprice =  mysqli_query($connect,$sql_price);
-                                    $rowprice =  mysqli_fetch_array($sumtoprice);
-*/
-
-
-
-
-
-                                    $query = mysqli_query($connect, "SELECT * FROM cart_item WHERE order_code='$table_order_code' ");
-                                    $cart = mysqli_num_rows($query);
-
-                                    $num = 0 ;
-                                    $total_sum_u = 0 ;
-                                    if ($cart > 0) {
-                                        while ($row0 = mysqli_fetch_assoc($query)) {
-                                            $code= $row0["code"];
-
-                                            $fooditem = mysqli_query($connect, "SELECT * FROM food_item WHERE food_menu_code='$code' ");
-                                            $rowfooditem = mysqli_fetch_assoc($fooditem);
-                                            $name = $rowfooditem["food_menu_name"];
-                                ?>
-                                
-                                <tr>
-                                        <td style="text-align: center; font-weight: bold;"><?php echo $num = $num + 1 ?></td>
-                                        <td ><?php echo $name; ?></td>
-                                    <form action="01order_list_user.php?id_cart_item=<?php echo $row0['id_cart_item']; ?>" method="post"enctype="multipart/form-data">
-
-                                        <td style="text-align: center;">
-                                            <div class="quantity">
-                                                <!-- <span class="minus" ><i class='bx bx-minus' ></i></span>-->
-                                                <!-- <span class="number"></span> -->
-                                                <input class="number" type="number" id="quantity" name="txtquantity_new" min="1" max="100" value="<?php echo $row0["quantity"] ;?>" >
-                                                <!-- <input  class="number" type="text" id="fname" name="txtquantity_new" value="<?php //echo $row0["quantity"] ;?>" > -->
-                                                <!-- <span class="plus" ><i class='bx bx-plus'></i></span> -->
-                                            </div>
-                                            <!-- <input type="text" id="fname" name="txtquantity_new" value="<?php //echo $row0["quantity"] ;?>" > -->
-                                        </td>   <?php   $total = $row0["quantity"]*$row0["price"]; ?>  
-                                                <?php /*echo $row0["quantity"] ?></td>    <?php   $total = $row0["quantity"]*$row0["price"]; */?>
-                                        
-                                        <td style="text-align: end;" ><?php echo number_format($row0["price"],2); ?></td>
-                                        <td style="text-align: end;" ><?php echo number_format($total,2); ?></td>
-                                        <td style="text-align: center;">
-                                        <!--
-                                            <a   name="del" type="submit" href="00order_list.php?id_cart_item=<?php //echo $row0['id_cart_item']; ?>" ><i class='bx bxs-trash-alt'></i></a>
-                                            <a  name="quantity_new" type="submit" href="00order_list.php?id_cart_item=<?php //echo $row0['id_cart_item']; ?>" ><i class='bx bx-check'></i></a>
-                                        -->
-                                        
-                                            <input class="btnL add" name="quantity_new" type="submit" value="บันทึกจำนวน">
-                                            <input class="btnL del" name="del_list" type="submit" value="ลบ">
-                                                
-                                        </td>
-
-                                    </form>
-                                </tr>
-                                
-                                <?php }   } else  { ?>
-                                    <td colspan="8" ><p>ไม่มีข้อมูลอาหารที่เพิ่มมา</p></td>
-                                <?php   }   ?>
-                                
-                                <?php
-                                
-                                $total_sum_u = mysqli_query ($connect, "SELECT quantity, price, SUM(quantity*price) as total_sum_u FROM cart_item WHERE order_code='$table_order_code' ");
-                                $row = mysqli_fetch_array($total_sum_u);
-
-                                ?>
-
-                                <tr style="background-color: #74b9ff  ;">
-                                    <td colspan="4" style="text-align: center;font-weight: bold;" >ราคารวมทั้งหมด</td>                
-                                    <td style="text-align: end; font-weight: bold;"><?php echo  number_format($row ["total_sum_u"] ,2);  ?></td>
-                                    <td style="text-align: center; font-weight: bold;">บาท</td>
-                                </tr>
-                        </table>                           
-                    </div>
-                    <div class="head1" >
-                        <form class="TTT" action=# method="post"enctype="multipart/form-data">
-                            <div class="T1">
-                                <input class="btn input" name="addmanu" type="submit" value="เพิ่มเมนูอาหาร">
-                                <input class="btn cancel" name="cancelcart" type="submit" value="ยกเลิกออเดอร์">
-                            </div>
-                            <div class="T2">
-                                <a  class="check_bill" href="#demo-modal">เช็คบิล</a>
-                                <!-- <input class="btn check_bill" name="" type="submit" value="เช็คบิล"> -->
-                            </div>
-                        </form>
-                    </div>
-                     
-                </div>
-            </div>
-
-            
-
-         
-            <div id="demo-modal" class="modal">
+    <div id="demo-modal" class="modal">
                 <div class="modal_content">
-                    <div class="tab">
+                    <div class="tabmodal">
                         <button class="tablinks" onclick="pay(event, 'bank')" id="defaultOpen" > <i class='bx bx-money'></i><p>เงินสด</p></button>
                         <button class="tablinks" onclick="pay(event, 'QRcode')"><i class='bx bx-scan'></i><p>QR code</p></button>
                     </div>
@@ -772,7 +736,7 @@ if(isset($_POST['check_bill-qr'])){
                         <p><?php echo  number_format($row ["total_sum_u"] ,2);  ?></p>
                     </div>
                     
-                        <div id="bank" class="tabcontent">
+                        <div id="bank" class="tabcontentmodal">
                             <div class="bobox">
                                     <!-- <h3>รับเงินจากลูกค้า</h3> -->
                                     <!-- <p>London is the capital city of England.</p> -->
@@ -783,7 +747,7 @@ if(isset($_POST['check_bill-qr'])){
                             </div>
                         </div>
 
-                        <div id="QRcode" class="tabcontent">
+                        <div id="QRcode" class="tabcontentmodal">
                             <div class="bo">
                                 <div class="img">
                                     <img src="imgweb/345612960_2454331051388936_9040482964579297519_n.jpg" alt="">
@@ -800,34 +764,57 @@ if(isset($_POST['check_bill-qr'])){
                 </div>
             </div>
 
-        
-                         
-                            
-                <script >
-                            function  myFunctionmyBtn() {
-                            var modal = document.getElementById('id01');
-                            var btn = document.getElementById("myBtn2");
-                            // When the user clicks anywhere outside of the modal, close it
-                            btn.onclick = function() {
-                                modal.style.display = "block";
-                            } 
-                            window.onclick = function(event) {
-                                if (event.target == modal) {
-                                    modal.style.display = "none";
-                                }
-                            }
-                            }
+            <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+          
 
-                            
-                        function myFunction() {
-                            var element = document.body;
-                            element.classList.toggle("dark-mode");
-                        }
+    <script>
 
-                
-                        function pay(evt, pay) {
+
+        $(".delete-btn-list").click(function(e) {
+            var cartId = $(this).data('id');
+            e.preventDefault();
+            deleteConfirm(cartId);
+        })
+
+        function deleteConfirm(cartId) {
+            Swal.fire({
+                icon: 'question',
+                text: "คุณต้องการลบข้อมูลใช่หรือไม่",
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'ใช่',
+                cancelButtonText: 'ยกเลิก',
+                showLoaderOnConfirm: true,
+                preConfirm: function() {
+                    return new Promise(function(resolve) {
+                        $.ajax({
+                                url: 'mobile_list.php',
+                                type: 'GET',
+                                data: 'del_list=' + cartId,
+                            })
+                            .done(function() {
+                                Swal.fire({
+                                    text: 'ลบข้อมูลเรียบร้อยแล้ว',
+                                    icon: 'success',
+                                }).then(() => {
+                                    document.location.href = 'mobile_list.php';
+                                })
+                            })
+                            .fail(function() {
+                                Swal.fire('Oops...', 'Something went wrong with ajax !', 'error')
+                                window.location.reload();
+                            });
+                    });
+                },
+            });
+        }
+
+        function pay(evt, pay) {
                         var i, tabcontent, tablinks;
-                        tabcontent = document.getElementsByClassName("tabcontent");
+                        tabcontent = document.getElementsByClassName("tabcontentmodal");
                         for (i = 0; i < tabcontent.length; i++) {
                             tabcontent[i].style.display = "none";
                         }
@@ -841,10 +828,88 @@ if(isset($_POST['check_bill-qr'])){
                         // Get the element with id="defaultOpen" and click on it
                         document.getElementById("defaultOpen").click();  
                         
-                        
+        function w3_close() {
+          document.getElementById("mySidebar").style.display = "none";
+        }
+        
+                function  myFunctionmyBtn() {
+                var modalid01 = document.getElementById('mySidebar');
+                var btn = document.getElementById("btn");
+                document.getElementById("mySidebar").style.display = "none";
+                // When the user clicks anywhere outside of the modal, close it
+                    btn.onclick = function() {
+                        modalid01.style.display = "block";
+                    } 
+                    window.onclick = function(event) {
+                        if (event.target == modalid01) {
+                            modalid01.style.display = "none";
+                        }
+                    }
+                }
+        
 
+                var acc = document.getElementsByClassName("accordion1");
+                var i;
+
+                for (i = 0; i < acc.length; i++) {
+                acc[i].addEventListener("click", function() {
+                    this.classList.toggle("active");
+                    var panel_E = this.nextElementSibling;
+                    if (panel_E.style.display === "block") {
+                        panel_E.style.display = "none";
+                    
+                    }else {
+                        panel_E.style.display = "block";
+                    } 
+                    
+                });
+                }
+
+      
+                function increment() {
+                    document.getElementById('demoInput').stepUp();
+                }
+                function decrement() {
+                    document.getElementById('demoInput').stepDown();
+                }
+/*
+                    var x = 0 ;
+                    document.getElementById("number").innerHTML = x;
+
+                    document.getElementById("plus").addEventListener("click",()=>{
+                        x=(x<10)?'0'+x:x;
+                        document.getElementById("number").innerHTML = ++x;
+                    })
+              
+                    document.getElementById("minus").addEventListener("click",()=>{
+                        if(x>1){
+                            x=(x<10)?'0'+x:x;
+                            document.getElementById("number").innerHTML = --x;
+                        }
                        
+                    })
 
-                </script>
-    </body>
+
+
+                const   plus = document.querySelector('.plus'),
+                        minus = document.querySelector('.minus'),
+                        number = document.querySelector('.number');
+
+                let a = 1;
+                plus.addEventListener('click',()=>{
+                    a++;
+                    a=(a<10)?'0'+a:a;
+                    number.innerText=a;
+                })
+                minus.addEventListener('click',()=>{
+                    if(a>1){
+                        a--;
+                        a=(a<10)?'0'+a:a;
+                        number.innerText=a;
+                    }
+                   
+                })
+        */
+        </script>
+</body>
 </html>

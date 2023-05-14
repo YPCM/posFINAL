@@ -51,17 +51,26 @@ if(isset($_POST["login"]))
                             $_SESSION['status_login'] = $status ;
                             $_SESSION['user_id'] = $iduser ;
 
+                          
+                            header("location:00tablenumber.php"); 
+
                          /*   $cookiename = htmlentities($_POST['username']);
 
                             setcookie('cookiename',$cookiename,time()+3600); // 1 ชม.*/
-                            header("location:00tablenumber.php"); 
+                         
 
                         }elseif($status==2){
                             $_SESSION['name_login'] = $name ;
                             $_SESSION['status_login'] = $status ;
                             $_SESSION['user_id'] = $iduser ;
-                            header("location:01tablenumber_user.php"); 
+                          
 
+
+                            if ( $detect->isMobile() ) {
+                                header("location:mobile_table.php"); 
+                            }else{
+                                header("location:01tablenumber_user.php"); 
+                            }
                         }
                         
 

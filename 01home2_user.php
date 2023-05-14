@@ -532,7 +532,7 @@ if(!empty($_GET["action"])) {
                                 <p style="text-align: center; width:150vh;" >ไม่มีข้อมูล "เมนูอาหารทานเล่น"<p>
                                 <?php }?>
                             </div>
-                           
+                            </div>
     
                         </div>
     
