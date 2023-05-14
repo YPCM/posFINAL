@@ -99,7 +99,7 @@ if(isset($_POST["login"]))
           }  
           else  
           {  
-               echo '<script>alert("vvvvvv")</script>';  
+               echo '<script>alert("กรุณาลองใหม่อีกครั้ง")</script>';  
           }  
      }
      
