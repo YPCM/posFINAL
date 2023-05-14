@@ -786,37 +786,37 @@ if (isset($_GET['status0_food'])) {
 <div class="boxx">
     <div class="boxS">
     <div class="tab">
-        <button class="tablinks" onclick="food(event, 'F1')" > <i class='bx bxs-dish'></i>อาหารจานหลัก/เมนูอาหาร</button>
-        <button class="tablinks" onclick="food(event, 'F2')"> <i class='bx bx-cookie'></i>อาหารทานเล่น</button>
-        <button class="tablinks" onclick="food(event, 'F3')"> <i class='bx bxs-wine'></i>เครื่องดื่ม</button>
-        <button class="tablinks" onclick="food(event, 'F4')"> <i class='bx bx-badge'></i>ท็อปปิ้ง</button>
-        <button class="tablinks" onclick="food(event, 'FF')"> <i style='color: #d63031; ' class='bx bxs-circle'></i> สถานะไม่พร้อมบริการ</button>
-        <button class="tablinks" onclick="food(event, 'F5')" id="defaultOpenfood" > <i class='bx bx-search-alt-2'></i>ค้นหาเมนูอาหาร</button>
+        <button class="tablinks" id="defaultOpen" onclick="openCity(event, 'f1')"> <i class='bx bxs-dish'></i>อาหารจานหลัก/เมนูอาหาร</button>
+        <button class="tablinks" onclick="openCity(event, 'f2')"> <i class='bx bx-cookie'></i>อาหารทานเล่น</button>
+        <button class="tablinks" onclick="openCity(event, 'f3')"> <i class='bx bxs-wine'></i>เครื่องดื่ม</button>
+        <button class="tablinks" onclick="openCity(event, 'f4')"> <i class='bx bx-badge'></i>ท็อปปิ้ง</button>
+        <button class="tablinks" onclick="openCity(event, 'f5')"> <i style='color: #d63031; ' class='bx bxs-circle'></i> สถานะไม่พร้อมบริการ</button>
+        <button class="tablinks" onclick="openCity(event, 'ff')"> <i class='bx bx-search-alt-2'></i>ค้นหาเมนูอาหาร</button>
     </div>
     
     <script>
-        function food(evt, cityName) {
-        var o, tabcontent, tablinks;
-        tabcontent = document.getElementsByClassName("tabcontent");
-        for (o = 0; o < tabcontent.length; o++) {
-            tabcontent[o].style.display = "none";
-        }
-        tablinks = document.getElementsByClassName("tablinks");
-        for (o = 0; o < tablinks.length; o++) {
-            tablinks[o].className = tablinks[o].className.replace(" active", "");
-        }
-        document.getElementById(cityName).style.display = "block";
-        evt.currentTarget.className += " active";
-        }
+            function openCity(evt, cityName) {
+            var i, tabcontent, tablinks;
+            tabcontent = document.getElementsByClassName("tabcontent");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+            tablinks = document.getElementsByClassName("tablinks");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].className = tablinks[i].className.replace(" active", "");
+            }
+            document.getElementById(cityName).style.display = "block";
+            evt.currentTarget.className += " active";
+            }
 
-        // Get the element with id="defaultOpen" and click on it
-        document.getElementById("defaultOpenfood").click();
+            // Get the element with id="defaultOpen" and click on it
+            document.getElementById("defaultOpen").click();
     </script>
 
 
 
 
-<div id="F1" class="tabcontent">
+<div id="f1" class="tabcontent">
     <div class="danger" style="background-color: #ffffff;" >
         <p>อาหารจานหลัก/เมนูอาหาร</p>
     </div>
@@ -914,7 +914,7 @@ if (isset($_GET['status0_food'])) {
 </div>
 
 
-<div id="F2" class="tabcontent">
+<div id="f2" class="tabcontent">
     <div class="danger" style="background-color: #ffffff;" >
         <p>อาหารทานเล่น</p>
     </div>
@@ -1011,7 +1011,7 @@ if (isset($_GET['status0_food'])) {
 </div>
 
 
-<div id="F3" class="tabcontent">
+<div id="f3" class="tabcontent">
     <div class="danger" style="background-color: #ffffff;" >
         <p>เครื่องดื่ม</p>
     </div>
@@ -1111,7 +1111,7 @@ if (isset($_GET['status0_food'])) {
 
 
 
-<div id="F4" class="tabcontent">
+<div id="f4" class="tabcontent">
     <div class="danger" style="background-color: #ffffff;" >
         <p>ท็อปปิ้ง</p>
     </div>
@@ -1200,7 +1200,7 @@ if (isset($_GET['status0_food'])) {
 
 
 
-<div id="F5" class="tabcontent">
+<div id="ff" class="tabcontent">
     <div class="danger" style="background-color: #ffffff;" >
         <p>ค้นหาเมนูอาหาร</p>
     </div>
@@ -1256,10 +1256,25 @@ if (isset($_GET['status0_food'])) {
 
 
                                                     while($rowsearch = mysqli_fetch_assoc($numrow) ) {
+                                                        $food_menu_code = $rowsearch["food_menu_code"] ;
+
+                                                        $query = mysqli_query($connect, "SELECT * FROM food_item WHERE food_menu_code = '$food_menu_code' ");
+                                                        $totalcnt = mysqli_num_rows($query);
+    
+                                                        if ($totalcnt > 0) {
+                                                            while ($row = mysqli_fetch_assoc($query)) {
+                                                        
+                                                                if($row['status']=='1'){
+                                                                    $statusfood = "<i style='color: #2ecc71; cursor: pointer;' class='bx bxs-circle status'></i>";
+                                                                }else{
+                                                                    $statusfood = "<i style='color: #d63031; cursor: pointer;' class='bx bxs-circle status'></i>";
+                                                                }
                                                       
                                             ?>
 
                                             <tr>
+                                                <td style="text-align: center;"><a data-id="<?= $row['food_menu_code']; ?>" href="?status_food=<?= $row['food_menu_code']; ?> " class="status-btn" ><?php echo $statusfood ;?></a></td>
+                                                                <?php } } ?>
                                                 <td style="text-align: center;"><p><?php echo $rowsearch["food_menu_code"]?></p></td>
                                                 <td style="text-align: center;"><img src="imgfood/<?php echo $rowsearch['img']?>" /></td>
                                                 <td style="text-align: start;"><?php echo $rowsearch["food_menu_name"]?></td>
@@ -1297,7 +1312,7 @@ if (isset($_GET['status0_food'])) {
     </div>
 </div>
 
-<div id="FF" class="tabcontent">
+<div id="f5" class="tabcontent">
     <div class="danger" style="background-color: #ffffff;" >
         <p>สถานะไม่พร้อมบริการ</p>
     </div>
