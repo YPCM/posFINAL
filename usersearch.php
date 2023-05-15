@@ -219,13 +219,7 @@ if (isset($_GET['exit'])) {
                             <td>พนักงาน</td>
                         <?php } ?>
                     <td><?php echo $rowsearch["phone"];?></td>
-                    <?php 
-                            if($rowsearch["useredit"]==0){        
-                        ?>
-                            <td><?php echo $rowsearch["date_added"];?></td>
-                        <?php }else{ ?>
-                            <td><?php echo $rowsearch["date_added"]." &nbsp &nbsp &nbsp"."[ แก้ไขล่าสุด ]";?></td>
-                        <?php } ?>
+                    <td><?php echo $rowsearch["date_added"];?></td>
                     <td class=btnA style=" text-align:center;"> 
                         <a  class="btntd edit" name="edit" href="useredit.php?user_id=<?=$row["user_id"]?>" ><i class='bx bxs-edit-alt' ></i></a> 
                         <a class="btntd delete" name="del_user" type="submit" onclick="Del(this.href); return false;" href="00user.php?del_user=<?php echo $row['user_id']; ?>"><i class='bx bxs-trash-alt'></i></a> 

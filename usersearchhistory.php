@@ -197,7 +197,7 @@ if (isset($_GET['exit'])) {
                         
                         if( !empty( $search ) ) {
                             
-                            $sqluser = mysqli_query( $connect, "SELECT * FROM `user` WHERE `user_name` LIKE '%$search%' " );
+                            $sqluser = mysqli_query($connect, "SELECT * FROM `user` WHERE `user_name` LIKE '%$search%' ");
                             $rowuser = mysqli_fetch_assoc($sqluser);
                             $userid= $rowuser['user_id'] ;
 

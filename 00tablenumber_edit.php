@@ -117,10 +117,63 @@ if (isset($_GET['user'])) {
     }*/
 }
 
+/*
+if(isset($_GET['status_table_0'])){
+    $edit_status = $_GET['status_table'];
+ 
+    echo $edit_status."0" ;
+   $sql = mysqli_query($connect , "UPDATE `table_id` SET `edit_status` ='0' WHERE  table_id='$edit_status' ");
+}
+
+if(isset($_GET['status_table_1'])){
+    $edit_status = $_GET['status_table'];
+ 
+    echo $edit_status."1" ;
+   $sql = mysqli_query($connect , "UPDATE `table_id` SET `edit_status` ='1' WHERE  table_id='$edit_status' ");
+}
+*/
+
+if (isset($_GET['status_food'])) {
+    $edit_status = $_GET['status_food'];
+
+    $sql_table = mysqli_query($connect,"SELECT * FROM table_number WHERE table_id=$edit_status ");
+    $rowtable = mysqli_fetch_assoc($sql_table);
+
+    if($rowtable['status']==1){
+        echo "<script>alert('ตอนนี้ไม่สามารถแก้ไขสถานะได้เนื่องจากมีลูกค้าใช้บริการอยู่ กรุณาลองใหม่ภายหลัง');</script>";
+    }else{
+        $sql = mysqli_query($connect , "UPDATE `table_number` SET `status` ='0' WHERE  table_id='$edit_status' ");
+    }
 
 
 
+/*
+    if ($sql) {
+        echo "<script>alert('Record Deleted Successfully!');</script>";
+        echo "<script>window.location.href='00food.php'</script>";
+    }
+    */
+}
+if (isset($_GET['status0_food'])) {
+    $edit_status = $_GET['status0_food'];
+ 
+    $sql_table = mysqli_query($connect,"SELECT * FROM table_number WHERE table_id=$edit_status ");
+    $rowtable = mysqli_fetch_assoc($sql_table);
 
+    if($rowtable['status']==0){
+        $sql = mysqli_query($connect , "UPDATE `table_number` SET `status` ='2' WHERE  table_id='$edit_status' "); 
+    }elseif($rowtable['status']==1){
+        echo "<script>alert('ตอนนี้ไม่สามารถแก้ไขสถานะได้เนื่องจากมีลูกค้าใช้บริการอยู่ กรุณาลองใหม่ภายหลัง');</script>";
+    }
+
+
+   /*
+    if ($sql) {
+        echo "<script>alert('Record Deleted Successfully!');</script>";
+        echo "<script>window.location.href='00food.php'</script>";
+    }
+    */
+}
 
 
 
@@ -284,11 +337,12 @@ if (isset($_GET['user'])) {
             <table id="example" class="display"  >
                 <thead>
                     <tr>
+                        <th style="width:5%;"></th>
                         <th style="width:10%; text-align:center ;">รหัสโต๊ะอาหาร</th> 
                         <th style="width:8%; text-align:center ;">สถานะโต๊ะ</th>
                         <th style="text-align:center ;">วันที่เพิ่มข้อมูล</th>
                         <th style="text-align:center ;">หมายเลขโต๊ะอาหาร</th>
-                        <th style="width:10%;"></th>
+                        <th style="width:5%;"></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -304,8 +358,27 @@ if (isset($_GET['user'])) {
                                 }else{
                                     $textstatus = "<p style='color:#d63031;'>มีลูกค้า<p>";
                                 }
+
+                                if($row['status']==0){
+                                    $textstatus = "<p style='color:#0984e3;'>ว่าง<p>";
+                                }elseif($row['status']==1){
+                                    $textstatus = "<p style='color:#d63031;'>มีลูกค้า<p>";
+                                }elseif($row['status']==2){
+                                    $textstatus = "<p style='color:#000;'>ไม่พร้อมใช้งาน<p>";
+                                }
+
+
+                                if($row['status']==2){
+                                    $statusfood = "<i style='color: #000; cursor: pointer;' class='bx bxs-circle status'></i>";
+                                }elseif($row['status']==1){
+                                    $statusfood = "<i style='color: #d63031; cursor: pointer;' class='bx bxs-circle status'></i>";
+                                }elseif($row['status']==0){
+                                    $statusfood = "<i style='color: #2ecc71; cursor: pointer;' class='bx bxs-circle status'></i>";
+                                }
                     ?>
                     <tr>
+                        <td style="text-align: center;"><a data-id="<?= $row['table_id']; ?>" href="?status0_food=<?= $row['table_id']; ?> " class="status-btn" ><?php echo $statusfood ;?></a></td>
+                       
                         <td style="text-align:center ;"><?php echo  $row['table_id'] ;?></td> 
                         <td style="text-align:center ;"><?php echo  $textstatus ;?></td> 
                         <td style="text-align:center ;"><?php echo  $row['date_added'] ; ?></td>
@@ -374,14 +447,79 @@ if (isset($_GET['user'])) {
 
   
 
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha2/js/bootstrap.bundle.min.js" integrity="sha384-BOsAfwzjNJHrJ8cZidOg56tcQWfp6y72vEJ8xQ9w6Quywb24iOsW913URv1IS4GD" crossorigin="anonymous"></script>
-
-<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
     <script>
 
 
+$(".status-btn").click(function(e) {
+            var statusfoodId = $(this).data('id');
+            e.preventDefault();
+            deleteConfirm(statusfoodId);
+        })
+
+        function deleteConfirm(statusfoodId) {
+            Swal.fire({
+                icon: 'question',
+                text: "แก้ไขสถานะเมนูอาหาร",
+                showCancelButton: true,
+                confirmButtonColor: '#d33',
+                cancelButtonColor: '#3085d6',
+                confirmButtonText: 'ไม่พร้อมให้บริการ',
+                cancelButtonText: 'พร้อมให้บริการ',
+                showLoaderOnConfirm: true,
+            }).then((result) => {
+                /* Read more about isConfirmed, isDenied below */
+                if (result.isConfirmed) {
+                    return new Promise(function(resolve) {
+                        $.ajax({
+                                url: '00tablenumber_edit.php',
+                                type: 'GET',
+                                data: 'status0_food=' + statusfoodId,
+                            })
+                            .done(function() {
+                                Swal.fire({
+                                    text: 'แก้ไขสถานะเรียบร้อยแล้ว',
+                                    icon: 'success',
+                                }).then(() => {
+                                    document.location.href = '00tablenumber_edit.php';
+                                })
+                            })
+                            .fail(function() {
+                                Swal.fire('Oops...', 'Something went wrong with ajax !', 'error')
+                                window.location.reload();
+                            });
+                    });
+                } else if (result.isDismissed) {
+                    return new Promise(function(resolve) {
+                        $.ajax({
+                                url: '00tablenumber_edit.php',
+                                type: 'GET',
+                                data: 'status_food=' + statusfoodId,
+                            })
+                            .done(function() {
+                                Swal.fire({
+                                    text: 'แก้ไขสถานะเรียบร้อยแล้ว',
+                                    icon: 'success',
+                                }).then(() => {
+                                    document.location.href = '00tablenumber_edit.php';
+                                })
+                            })
+                            .fail(function() {
+                                Swal.fire('Oops...', 'Something went wrong with ajax !', 'error')
+                                window.location.reload();
+                            });
+                    });
+                }
+                })
+
+        }
 
        
+
+
+
 
     
         var modal = document.getElementById("myModal");

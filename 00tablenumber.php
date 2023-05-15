@@ -81,11 +81,13 @@ if (isset($_GET['table'])) {
         $_SESSION["table_order_code"] = $roworder_code['order_code'];
         /*print_r($_SESSION["table_order_code"]);*/
        echo "<script>window.location.href='00order_list.php'</script>";    
-    }else{
+    }elseif($cart1 == 2) {
+        echo "<script>alert('สถานะโต๊ะไม่พร้อมใช้งาน');</script>";   
+        echo "<script>window.location.href='00tablenumber.php'</script>";  
+    }elseif($cart1 == 0) {
         echo "<script>window.location.href='00home2.php'</script>";     
-    }
     
-}
+} }
 /*
 if (isset($_GET['table'])) {
 
@@ -318,10 +320,15 @@ if (isset($_GET['user'])) {
                                       
                                         <a name="del" type="submit" name="table" href="00tablenumber.php?table='.$row['table_id'].' ">'.$row['number'].'</a>
                                     </div>';
-                        }else{
+                        }elseif($row['status']==0){ 
                             echo    '<div class="ta no">
                                        
                                         <a name="del" type="submit" name="table"href="00tablenumber.php?table='.$row['table_id'].' ">'.$row['number'].'</a>
+                                    </div>';
+                        }elseif($row['status']==2){ 
+                            echo    '<div class="ta off" style="background-color: #000000;">
+                                       
+                                        <a style="text-decoration: none;color: #fff;" name="del" type="submit" name="table" href="00tablenumber.php?table='.$row['table_id'].' ">'.$row['number'].'</a>
                                     </div>';
                         }
                     ?>
