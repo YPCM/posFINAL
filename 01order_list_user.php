@@ -786,7 +786,7 @@ if(isset($_POST['check_bill-qr'])){
                         <div id="QRcode" class="tabcontent">
                             <div class="bo">
                                 <div class="img">
-                                    <img src="imgweb/345612960_2454331051388936_9040482964579297519_n.jpg" alt="">
+                                    <img src="imgweb/345660516_776367774068249_4038221527009426064_n.jpg" alt="">
                                 </div>
                                 <form  action="#" method="post"enctype="multipart/form-data">
                                     <input class="btn input" name="check_bill-qr" type="submit"  value="ชำระเงิน">
