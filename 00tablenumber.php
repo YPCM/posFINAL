@@ -326,7 +326,7 @@ if (isset($_GET['user'])) {
                                         <a name="del" type="submit" name="table"href="00tablenumber.php?table='.$row['table_id'].' ">'.$row['number'].'</a>
                                     </div>';
                         }elseif($row['status']==2){ 
-                            echo    '<div class="ta off" style="background-color: #000000;">
+                            echo    '<div class="ta off" style="background-color: #000000;display: none;">
                                        
                                         <a style="text-decoration: none;color: #fff;" name="del" type="submit" name="table" href="00tablenumber.php?table='.$row['table_id'].' ">'.$row['number'].'</a>
                                     </div>';

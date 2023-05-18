@@ -257,13 +257,29 @@ if (isset($_GET['user'])) {
                     while($row = mysqli_fetch_array($sql)) {
                 ?>
                     <?php
-                        if($row['status']==1){                    
+                       /* if($row['status']==1){                    
                             echo    '<div class="ta yes ">
                                         <a name="del" type="submit" name="table" href="01tablenumber_user.php?table='.$row['table_id'].' ">'.$row['number'].'</a>
                                     </div>';
                         }else{
                             echo    '<div class="ta no">
                                         <a name="del" type="submit" name="table"href="01tablenumber_user.php?table='.$row['table_id'].' ">'.$row['number'].'</a>
+                                    </div>';
+                        }*/
+                        if($row['status']==1){                    
+                            echo    '<div class="ta yes ">
+                                      
+                                        <a name="del" type="submit" name="table" href="01tablenumber_user.php?table='.$row['table_id'].' ">'.$row['number'].'</a>
+                                    </div>';
+                        }elseif($row['status']==0){ 
+                            echo    '<div class="ta no">
+                                       
+                                        <a name="del" type="submit" name="table"href="01tablenumber_user.php?table='.$row['table_id'].' ">'.$row['number'].'</a>
+                                    </div>';
+                        }elseif($row['status']==2){ 
+                            echo    '<div class="ta off" style="background-color: #000000;display: none;">
+                                       
+                                        <a style="text-decoration: none;color: #fff;" name="del" type="submit" name="table" href="01tablenumber_user.php?table='.$row['table_id'].' ">'.$row['number'].'</a>
                                     </div>';
                         }
                     ?>

@@ -398,18 +398,23 @@ if (isset($_GET['user'])) {
                     $fetchdata = new DB_con();
                     $sql = $fetchdata->fetchdata();
                     while($row = mysqli_fetch_array($sql)) {
-                
+                        
                         if($row['status']==1){                    
                             echo    ' <a class="table " style="background-color: #fff;"  type="submit" name="table" href="mobile_table.php?table='.$row['table_id'].' "  >
                             <span style="background-color: #fec61d; color: white;" class="material-icons sticky">sticky_note_2</span>
                             <div style="border-right: 3px solid  #fec61d;" class="number">'.$row['number'].'</div>
                         </a>';
-                        }else{
+                        }elseif($row['status']==0){
                             echo    ' <a class="table " style="background-color: #fff;border-right: 3px solid  #0984e3;"  type="submit" name="table" href="mobile_table.php?table='.$row['table_id'].' "  >
                             <span style="background-color: #0984e3; color: white;" class="material-icons sticky">open_in_new</span>
                             <div style="border-right: 3px solid  #0984e3;" class="number">'.$row['number'].'</div>
                         </a>';
 
+                        }elseif($row['status']==0){
+                            echo    ' <a class="table " style="display: none;background-color: #fff;border-right: 3px solid  #0984e3;"  type="submit" name="table" href="mobile_table.php?table='.$row['table_id'].' "  >
+                            <span style="background-color: #0984e3; color: white;" class="material-icons sticky">open_in_new</span>
+                            <div style="border-right: 3px solid  #0984e3;" class="number">'.$row['number'].'</div>
+                        </a>';
                         }
                     }
                 ?>
